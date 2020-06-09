@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-import MobileMenu from '../components/MobileMenu'
+// import MobileMenu from '../components/MobileMenu'
 
 // import Logo from '../images/logo.svg';
 // import Whale1 from '../images/whale-1.svg'
@@ -21,7 +21,6 @@ const HomePage = () => {
 
     return (
 
-        // Container
         <div className="relative bg-white overflow-hidden">
             {/* Inside container */}
             <div className="relative pt-6 pb-16 md:pb-20 lg:pb-24 xl:pb-32">

@@ -3,11 +3,11 @@ import { NavLink, Link } from 'react-router-dom';
 
 import MobileMenu from '../components/MobileMenu'
 
-import Logo from '../images/logo.svg';
-import Whale1 from '../images/whale-1.svg'
-import Whale2 from '../images/whale-2.svg'
-import Whale3 from '../images/whale-3.svg'
-import Whale4 from '../images/whale-4.svg'
+// import Logo from '../images/logo.svg';
+// import Whale1 from '../images/whale-1.svg'
+// import Whale2 from '../images/whale-2.svg'
+// import Whale3 from '../images/whale-3.svg'
+// import Whale4 from '../images/whale-4.svg'
 import Whale5 from '../images/whale-5.svg'
 
 
@@ -40,7 +40,7 @@ const HomePage = () => {
                             <div className="-mr-2 flex items-center md:hidden">
                                 <button type="button" className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" onClick={() => toggleMobileMenu()}>
                                     <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                                     </svg>
                                 </button>
                             </div>

@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from './containers/HomePage';
 import LoginPage from './containers/LoginPage';
 
+import './tailwind.generated.css';
+
 function App() {
   return (
     <Router>

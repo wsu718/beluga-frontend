@@ -71,7 +71,7 @@ const HomePage = () => {
                 </nav>
 
                 {/* Show MobileMenu when hamburger icon is clicked */}
-                {isMobileMenu ? <MobileMenu toggleMobileMenu={toggleMobileMenu} /> : <></>}
+                {/* {isMobileMenu ? <MobileMenu toggleMobileMenu={toggleMobileMenu} /> : <></>} */}
 
                 {/* Primary page content; hero block */}
                 <div className="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24">

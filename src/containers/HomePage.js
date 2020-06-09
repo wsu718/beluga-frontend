@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-// import MobileMenu from '../components/MobileMenu'
+import MobileMenu from '../components/MobileMenu'
 
 // import Logo from '../images/logo.svg';
 // import Whale1 from '../images/whale-1.svg'
@@ -17,6 +17,10 @@ const HomePage = () => {
 
     const toggleMobileMenu = () => {
         setIsMobileMenu(!isMobileMenu)
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
     }
 
     return (
@@ -60,7 +64,7 @@ const HomePage = () => {
                     <div className="hidden md:block text-right">
                         <span className="inline-flex rounded-md shadow-md">
                             <span className="inline-flex rounded-md shadow-xs">
-                                <NavLink to='/login' className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+                                <NavLink to='/' className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
                                     Log in
                                 </NavLink>
                             </span>
@@ -70,7 +74,7 @@ const HomePage = () => {
                 </nav>
 
                 {/* Show MobileMenu when hamburger icon is clicked */}
-                {/* {isMobileMenu ? <MobileMenu toggleMobileMenu={toggleMobileMenu} /> : <></>} */}
+                {isMobileMenu ? <MobileMenu toggleMobileMenu={toggleMobileMenu} /> : <></>}
 
                 {/* Primary page content; hero block */}
                 <div className="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24">
@@ -100,11 +104,12 @@ const HomePage = () => {
                                 We'll let you know when we're ready!
                                 </p>
 
-                            <form action="#" method="POST" className="mt-3 sm:flex">
+                            <form onSubmit={handleSubmit} className="mt-3 sm:flex">
                                 <input aria-label="Email" className="appearance-none block w-full px-3 py-3 border border-gray-300 text-base leading-6 rounded-md placeholder-gray-500 shadow-sm focus:outline-none focus:placeholder-gray-400 focus:shadow-outline focus:border-blue-300 transition duration-150 ease-in-out sm:flex-1" placeholder="Enter your email" />
+
                                 <button type="submit" className="mt-3 w-full px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:shadow-outline active:bg-gray-900 transition duration-150 ease-in-out sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
                                     Notify me
-                                    </button>
+                                </button>
                             </form>
 
                             <p className="mt-3 text-sm leading-5 text-gray-500">

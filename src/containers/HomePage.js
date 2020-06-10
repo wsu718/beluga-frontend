@@ -16,8 +16,8 @@ const HomePage = () => {
     const [isMobileMenu, setIsMobileMenu] = useState(false);
 
     const toggleMobileMenu = () => {
-        // setIsMobileMenu(!isMobileMenu)
-        console.log('fired')
+        setIsMobileMenu(!isMobileMenu)
+        // console.log('fired')
     }
 
     const handleSubmit = e => {

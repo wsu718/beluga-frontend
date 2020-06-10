@@ -4,18 +4,7 @@ import Whale5 from '../images/whale-5.svg';
 import { NavLink } from 'react-router-dom';
 
 const mobileMenu = ({ toggleMobileMenu }) => {
-
     return (
-
-        // Mobile menu, show/hide based on menu open state.
-
-        //     Entering: "duration-150 ease-out"
-        //       From: "opacity-0 scale-95"
-        //       To: "opacity-100 scale-100"
-        //     Leaving: "duration-100 ease-in"
-        //       From: "opacity-100 scale-100"
-        //       To: "opacity-0 scale-95"
-
         <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden" >
             <div className="rounded-lg shadow-md">
                 <div className="rounded-lg bg-white shadow-xs overflow-hidden">

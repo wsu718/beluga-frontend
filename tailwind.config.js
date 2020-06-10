@@ -3,9 +3,7 @@ module.exports = {
     // './public/**/*.html',
     // './src/**/*.js',
   ],
-  theme: {
-    extend: {},
-  },
+  theme: {},
   variants: {},
   plugins: [
     require('@tailwindcss/ui'),

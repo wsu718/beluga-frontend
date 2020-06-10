@@ -11,7 +11,7 @@ import MobileMenu from '../components/MobileMenu'
 import Whale5 from '../images/whale-5.svg'
 
 
-const HomePage = () => {
+const LandingPage = () => {
 
     const [isMobileMenu, setIsMobileMenu] = useState(false);
 
@@ -119,7 +119,7 @@ const HomePage = () => {
                                         <Link to="/" className="font-medium text-gray-900 underline ml-1">
                                     Privacy Policy
                                         </Link>.
-                                </p>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -161,4 +161,4 @@ const HomePage = () => {
     )
 };
 
-export default HomePage;
+export default LandingPage;

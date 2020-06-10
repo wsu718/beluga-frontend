@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LandingPage from './containers/LandingPage';
 import LoginPage from './containers/LoginPage';
-import { MainPage } from './containers/MainPage';
-import { ViewPost } from './containers/MainPage';
+import MainPage from './containers/MainPage';
+import ViewPost from './containers/ViewPost';
 
 import './tailwind.generated.css';
 

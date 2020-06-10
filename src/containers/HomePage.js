@@ -17,7 +17,6 @@ const HomePage = () => {
 
     const toggleMobileMenu = () => {
         setIsMobileMenu(!isMobileMenu)
-        // console.log('fired')
     }
 
     const handleSubmit = e => {

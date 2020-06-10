@@ -95,7 +95,9 @@ const HomePage = () => {
 
                         {/* Subtext */}
                         <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                            Our relationships are what make us who we are. But too often, technology amplifies the worst parts of us. We want to fix online conversation. Beluga is a way to connect with smart, supportive people, to learn new things, and share wisdom. It is a place that connects us, and bring us closer together.
+                            Our relationships are what make us who we are. But too often, technology amplifies the worst parts of us. We want to fix online conversation.</p>
+
+                        <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Beluga is a way to connect with smart, supportive people, to learn new things, and share wisdom. It is a place that connects us, and bring us closer together.
                             </p>
 
                         {/* Email capture box */}

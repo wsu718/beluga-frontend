@@ -1,12 +1,15 @@
 import React from 'react';
 import PostCard from './PostCard';
 
-const Feed = ({ posts, handleClick }) => {
+const Feed = ({ posts }) => {
+    console.log(posts)
     return (
         <div className="pt-4">
-            {posts.map((post) => (
-                <PostCard post={post} key={post.id} handleClick={handleClick} />
-            ))}
+            {/* {posts.posts.map(post => (
+            
+                // < PostCard post = { post } key = { post.id } />
+            ))} */}
+
 
         </div>
     )

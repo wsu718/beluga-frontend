@@ -14,7 +14,7 @@ export const initialState = {
             post_votes: {
                 // Will need to sum the votes
                 post_vote_count: 19,
-                user_up_vote: true,
+                user_up_vote: false,
                 user_down_vote: false
             },
             comments: [
@@ -58,12 +58,13 @@ export const postsReducer = (state, action) => {
                 ...state,
                 posts: [
                     ...state.posts.map(item => {
-                        if (item.id === action.payload) {
+                        if (item.id === action.payload && item.post_votes.user_up_vote === false) {
                             return {
                                 ...item,
                                 post_votes: {
                                     ...item.post_votes,
-                                    post_vote_count: item.post_votes.post_vote_count + 1
+                                    post_vote_count: item.post_votes.post_vote_count + 1,
+                                    user_up_vote: true
                                 }
                             }
                         }

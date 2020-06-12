@@ -1,19 +1,19 @@
 import React, { useReducer } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { feedReducer, initialState } from './reducers/feedReducer';
-import { FeedDispatchContext } from './contexts/FeedDispatchContext';
+import { postsReducer, initialState } from './reducers/postsReducer';
+import { PostsDispatchContext } from './contexts/PostsDispatchContext';
 
-import LandingPage from './containers/LandingPage';
-import LoginPage from './containers/LoginPage';
-import MainPage from './containers/MainPage';
-import ViewPost from './containers/ViewPost';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
+import PostPage from './pages/PostPage';
 
 import './tailwind.generated.css';
 
 function App() {
 
-  const [posts, dispatch] = useReducer(feedReducer, initialState)
+  const [posts, dispatch] = useReducer(postsReducer, initialState)
 
 
   // const handleClick = () => {
@@ -22,7 +22,7 @@ function App() {
   // }
 
   return (
-    <FeedDispatchContext.Provider value={{ dispatch }}>
+    <PostsDispatchContext.Provider value={{ dispatch }}>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -32,14 +32,14 @@ function App() {
             <LoginPage />
           </Route>
           <Route path="/main">
-            <MainPage posts={posts} />
+            <MainPage posts={posts.posts} />
           </Route>
           <Route path="/posts/:id">
-            <ViewPost posts={posts} />
+            <PostPage posts={posts.posts} />
           </Route>
         </Switch>
       </Router>
-    </FeedDispatchContext.Provider>
+    </PostsDispatchContext.Provider>
   );
 }
 

@@ -2,6 +2,7 @@ export const initialState = {
     isLoading: false,
     posts: [
         {
+            count: 1,
             id: 1,
             header: 'Folks who have substantially improved the quality of your sleep: what worked?',
             body: '',
@@ -49,12 +50,27 @@ export const initialState = {
     ]
 };
 
-export const feedReducer = (state, action) => {
+export const postsReducer = (state, action) => {
     switch (action.type) {
         case 'upvote':
-            return [{
-                ...state
-            }]
+            console.log(action.payload)
+            return {
+                ...state,
+                posts: [
+                    ...state.posts.map(item => {
+                        if (item.id === action.payload) {
+                            return {
+                                ...item,
+                                post_votes: {
+                                    ...item.post_votes,
+                                    post_vote_count: item.post_votes.post_vote_count + 1
+                                }
+                            }
+                        }
+                        return item
+                    })
+                ]
+            }
         default:
             return state;
     }

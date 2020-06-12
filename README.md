@@ -1,1 +1,1 @@
-This is the pre-launch frontend for Beluga.
+This is the staging frontend for Beluga.

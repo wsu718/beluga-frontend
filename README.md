@@ -1,1 +1,1 @@
-This is the alpha frontend for Beluga.
+This is the production frontend for Beluga.

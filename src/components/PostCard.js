@@ -5,10 +5,12 @@ import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
 import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
 import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 
-import { FeedDispatchContext } from '../contexts/FeedDispatchContext'
+import { PostsDispatchContext } from '../contexts/PostsDispatchContext'
 
-const PostCard = ({ post }) => {
-    const { dispatch } = useContext(FeedDispatchContext)
+const PostCard = ({ post, posts }) => {
+    const { dispatch } = useContext(PostsDispatchContext)
+
+    console.log(posts)
 
     return (
         <div className="px-6 border-b border-gray-200">
@@ -23,7 +25,7 @@ const PostCard = ({ post }) => {
 
             <div className="flex my-4">
                 <p>{post.post_votes.post_vote_count}</p>
-                <p><IconArrowUp onClick={() => dispatch({ type: 'upvote' })} /></p >
+                <p><IconArrowUp onClick={() => dispatch({ type: 'upvote', payload: post.id })} /></p >
                 <p><IconArrowDown onClick={() => console.log('test')} /></p>
                 <p className="ml-6">{post.comments.length}</p>
                 <p><IconComment /></p>

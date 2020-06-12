@@ -6,7 +6,7 @@ import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
 import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
 import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 
-const ViewPost = ({ posts, handleClick }) => {
+const PostPage = ({ posts, handleClick }) => {
     const { id } = useParams();
     const post = posts.find(post => post.id === Number(id))
 
@@ -41,4 +41,4 @@ const ViewPost = ({ posts, handleClick }) => {
     )
 }
 
-export default ViewPost;
+export default PostPage;

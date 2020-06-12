@@ -1,14 +1,14 @@
 import React from 'react';
 
-import CreatePost from './CreatePost.js';
+import CreatePost from '../components/CreatePost.js';
 import Feed from '../components/Feed';
 
-const MainPage = ({ posts }) => {
+const MainPage = ({ posts, dispatch }) => {
 
     return (
         <div>
             <CreatePost />
-            <Feed posts={posts} />
+            <Feed posts={posts} dispatch={dispatch} />
         </div>
     )
 

@@ -1,1 +1,1 @@
-This is the staging frontend for Beluga.
+This is the landing frontend for Beluga.

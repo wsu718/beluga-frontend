@@ -2,7 +2,7 @@ This is the frontend for Beluga.
 
 **branch/deployment structure** 
 
-**master**
+**production**
 Deploys to beluga-alpha.now.sh for now.
 When we’re ready to have users, will deploy to alpha.getbeluga.com.
 

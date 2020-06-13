@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-
 // import Logo from '../images/logo.svg';
 // import Whale1 from '../images/whale-1.svg'
 // import Whale2 from '../images/whale-2.svg'
@@ -12,56 +11,31 @@ import Whale4 from '../images/whale-4.svg'
 
 const LandingPage = () => {
 
-    const [email, setEmail] = useState('');
-    const [success, setSuccess] = useState(false);
+    // const [email, setEmail] = useState('');
+    // const [success, setSuccess] = useState(false);
 
-    const handleEmail = e => {
-        setEmail(e.target.value)
-    }
+    // const handleEmail = e => {
+    //     setEmail(e.target.value)
+    // }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        console.log(email)
-        console.log(success)
-        axios
-            .post('https://us10.api.mailchimp.com/3.0/lists/86f69ad479/members',
-                {
-                    // Tell Mailchimp to subscribe this email
-                    status: 'subscribed',
-                    // Note that Mailchimp takes an email_address field, not just email
-                    email_address: email,
-                },
-                {
-                    headers: {
-                        'Authorization': 'Basic 3e715d06b8b7c7d631bee4b18039d9e9-us10',
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                },
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     axios
+    //         .post('https://us10.api.mailchimp.com/3.0/lists/86f69ad479/members',
+    //             {
+    //                 status: 'subscribed',
+    //                 email_address: email
+    //             },
+    //             {
+    //                 headers: {
+    //                     'Authorization': 'Basic xxxx',
+    //                     'Accept': 'application/json',
+    //                     'Content-Type': 'application/json',
+    //                 },
+    //             },
 
-            )
-        // .then(res => {
-        //     setSuccess(true)
-        // })
-
-        // fetch('https://us10.api.mailchimp.com/3.0/lists/86f69ad479/members', {
-        //     mode: 'no-cors',
-        //     method: 'POST',
-        //     headers: {
-        //         'Authorization': 'test',
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         email_address: "somedude@gmail.com",
-        //         status: "subscribed",
-        //         auth: {
-        //             'user': 'your_user_name',
-        //             'pass': process.env.REACT_APP_KEY
-        //         }
-        //     })
-        // })
-    }
+    //         )
+    // }
 
     return (
 
@@ -112,7 +86,7 @@ const LandingPage = () => {
                         <p className="mt-6 text-base text-gray-500 sm:mt-10 sm:text-xl lg:text-lg xl:text-xl">Beluga is a way to connect with smart, supportive people, to learn new things, and share wisdom. It is a place that connects us, and bring us closer together.
                         </p>
 
-                        {/* Email capture box */}
+                        {/* Email capture box
                         <div className="mt-5 sm:max-w-lg sm:mx-auto sm:text-center sm:mt-10">
                             <p className="text-base font-medium text-gray-900">
                                 We'll let you know when we're ready!
@@ -132,8 +106,8 @@ const LandingPage = () => {
                                     <Link to="/" className="font-medium text-gray-900 underline ml-1">
                                     Privacy Policy
                                     </Link>.
-                            </p>
-                        </div>
+                            </p> 
+                        </div> */}
                     </div>
                 </div>
             </div>

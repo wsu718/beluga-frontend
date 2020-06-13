@@ -24,11 +24,43 @@ const LandingPage = () => {
         console.log(email)
         console.log(success)
         axios
-            .post('https://getbeluga.us10.list-manage.com/subscribe/post?u=6251f35fb6aa4d917f79bd982&amp;id=86f69ad479', email)
-            .then(res => {
-                setSuccess(true)
-            })
+            .post('https://us10.api.mailchimp.com/3.0/lists/86f69ad479/members',
+                {
+                    // Tell Mailchimp to subscribe this email
+                    status: 'subscribed',
+                    // Note that Mailchimp takes an email_address field, not just email
+                    email_address: email,
+                },
+                {
+                    headers: {
+                        'Authorization': 'Basic 3e715d06b8b7c7d631bee4b18039d9e9-us10',
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                },
 
+            )
+        // .then(res => {
+        //     setSuccess(true)
+        // })
+
+        // fetch('https://us10.api.mailchimp.com/3.0/lists/86f69ad479/members', {
+        //     mode: 'no-cors',
+        //     method: 'POST',
+        //     headers: {
+        //         'Authorization': 'test',
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         email_address: "somedude@gmail.com",
+        //         status: "subscribed",
+        //         auth: {
+        //             'user': 'your_user_name',
+        //             'pass': process.env.REACT_APP_KEY
+        //         }
+        //     })
+        // })
     }
 
     return (

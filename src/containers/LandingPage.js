@@ -13,19 +13,20 @@ import Whale4 from '../images/whale-4.svg'
 const LandingPage = () => {
 
     const [email, setEmail] = useState('');
+    const [success, setSuccess] = useState(false);
 
     const handleEmail = e => {
-        console.log(email)
         setEmail(e.target.value)
     }
 
     const handleSubmit = e => {
-        console.log(email)
         e.preventDefault()
+        console.log(email)
+        console.log(success)
         axios
             .post('https://getbeluga.us10.list-manage.com/subscribe/post?u=6251f35fb6aa4d917f79bd982&amp;id=86f69ad479', email)
             .then(res => {
-                console.log(res)
+                setSuccess(true)
             })
 
     }
@@ -91,6 +92,7 @@ const LandingPage = () => {
                                 <button type="submit" className="mt-3 w-full px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:shadow-outline active:bg-gray-900 transition duration-150 ease-in-out sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
                                     Notify me
                                 </button>
+                                {success && <p>Thank you! We'll be in touch!</p>}
                             </form>
 
                             <p className="mt-3 text-sm leading-5 text-gray-500">

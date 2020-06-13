@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 // import Logo from '../images/logo.svg';
 // import Whale1 from '../images/whale-1.svg'
 // import Whale2 from '../images/whale-2.svg'
 // import Whale3 from '../images/whale-3.svg'
 import Whale4 from '../images/whale-4.svg'
-// import Whale5 from '../images/whale-5.svg'
-
+// import Whale5 from '../images/whale-5.svg'  
 
 const LandingPage = () => {
 
+    const [email, setEmail] = useState('');
+
+    const handleEmail = e => {
+        console.log(email)
+        setEmail(e.target.value)
+    }
+
     const handleSubmit = e => {
-        e.preventDefault();
+        console.log(email)
+        e.preventDefault()
+        axios
+            .post('https://getbeluga.us10.list-manage.com/subscribe/post?u=6251f35fb6aa4d917f79bd982&amp;id=86f69ad479', email)
+            .then(res => {
+                console.log(res)
+            })
+
     }
 
     return (
@@ -29,6 +44,7 @@ const LandingPage = () => {
                             {/* Logo */}
                             <p className="md:mx-auto">
                                 <img className="h-14 w-auto sm:h-14 md:mx-auto" src={Whale4} alt="Beluga" />
+
                             </p>
 
                         </div>
@@ -70,7 +86,7 @@ const LandingPage = () => {
                             </p>
 
                             <form onSubmit={handleSubmit} className="mt-3 sm:flex">
-                                <input aria-label="Email" className="appearance-none block w-full px-3 py-3 border border-gray-300 text-base leading-6 rounded-md placeholder-gray-500 shadow-sm focus:outline-none focus:placeholder-gray-400 focus:shadow-outline focus:border-blue-300 transition duration-150 ease-in-out sm:flex-1" placeholder="Enter your email" />
+                                <input aria-label="Email" className="appearance-none block w-full px-3 py-3 border border-gray-300 text-base leading-6 rounded-md placeholder-gray-500 shadow-sm focus:outline-none focus:placeholder-gray-400 focus:shadow-outline focus:border-blue-300 transition duration-150 ease-in-out sm:flex-1" placeholder="Enter your email" onChange={handleEmail} />
 
                                 <button type="submit" className="mt-3 w-full px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:shadow-outline active:bg-gray-900 transition duration-150 ease-in-out sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
                                     Notify me

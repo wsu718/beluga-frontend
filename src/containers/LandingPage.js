@@ -80,11 +80,11 @@ const LandingPage = () => {
 
                         {/* Subtext */}
                         <p className="mt-6 text-base text-gray-500 sm:mt-10 sm:text-xl lg:text-lg xl:text-xl">
-                            Our relationships are what make us who we are. But too often, technology amplifies the worst parts of us. We want to fix online conversation.
+                            Beluga connects smart, insightful people into highly-curated, tight-knit groups, so we can support each other and share wisdom. We are helpful and positive.
                         </p>
 
-                        <p className="mt-6 text-base text-gray-500 sm:mt-10 sm:text-xl lg:text-lg xl:text-xl">Beluga is a way to connect with smart, supportive people, to learn new things, and share wisdom. It is a place that connects us, and bring us closer together.
-                        </p>
+                        {/* <p className="mt-6 text-base text-gray-500 sm:mt-10 sm:text-xl lg:text-lg xl:text-xl">Beluga is a way to connect with smart, supportive people, to learn new things, and share wisdom. It is a place that connects us, and bring us closer together.
+                        </p> */}
 
                         {/* Email capture box
                         <div className="mt-5 sm:max-w-lg sm:mx-auto sm:text-center sm:mt-10">

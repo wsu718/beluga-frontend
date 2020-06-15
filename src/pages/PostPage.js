@@ -11,6 +11,7 @@ const PostPage = ({ posts, handleClick }) => {
     const post = posts.find(post => post.id === Number(id))
 
     return (
+
         <div className="px-6 border-b border-gray-200">
 
             {/* Original post */}
@@ -24,7 +25,7 @@ const PostPage = ({ posts, handleClick }) => {
                 </div>
 
                 <div className="flex my-4">
-                    <p>{post.post_votes.post_vote_count}</p>
+                    {/* <p>{post.post_votes.post_vote_count}</p> */}
                     <p><IconArrowUp onClick={() => handleClick()} /></p>
                     <p><IconArrowDown onClick={() => handleClick()} /></p>
                     <p className="ml-6">{post.comments.length}</p>

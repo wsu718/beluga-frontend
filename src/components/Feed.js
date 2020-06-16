@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PostCard from './PostCard';
 
-const Feed = ({ posts, dispatch }) => {
-    // console.log(posts)
+import { connect } from 'react-redux';
+import { getPosts } from '../state/actions'
+
+const Feed = ({ posts, getPosts }) => {
+
+    useEffect(() => {
+        getPosts();
+    }, [getPosts]);
+
     return (
         <div className="pt-4">
             {posts.map(post => (
-                <PostCard post={post} key={post.id} dispatch={dispatch} posts={posts} />
+                <PostCard post={post} key={post.id} />
             ))}
         </div>
     )
 }
 
-export default Feed;
+const mapStateToProps = state => {
+    return {
+        posts: state.posts.data
+    }
+}
+
+export default connect(mapStateToProps, { getPosts })(Feed);

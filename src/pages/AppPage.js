@@ -3,15 +3,21 @@ import React from 'react';
 import CreatePost from '../components/CreatePost.js';
 import Feed from '../components/Feed';
 
-const MainPage = ({ posts, dispatch }) => {
+
+
+const AppPage = () => {
+
+
 
     return (
         <div>
             <CreatePost />
-            <Feed posts={posts} dispatch={dispatch} />
+            <Feed />
         </div>
     )
 
 };
 
-export default MainPage;
+
+
+export default AppPage;

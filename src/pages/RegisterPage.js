@@ -4,15 +4,17 @@ import { useHistory } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-import { login } from '../state/actions/index';
+import { registerAction } from '../state/actions/index';
 
-const LoginPage = ({ auth, login }) => {
+const RegisterPage = ({ auth, registerAction }) => {
 
     let history = useHistory();
 
     const { register, handleSubmit, errors } = useForm();
 
-    const onSubmit = data => login(data);
+    const onSubmit = data => registerAction(data);
+
+
 
     useEffect(() => {
         if (auth.isLoggedIn) {
@@ -26,7 +28,7 @@ const LoginPage = ({ auth, login }) => {
 
     return (
         <div className="flex flex-col">
-            <p className="text-5xl">Login</p>
+            <p className="text-5xl">Register</p>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
 
                 <label>Email</label>
@@ -70,6 +72,24 @@ const LoginPage = ({ auth, login }) => {
                 />
                 {errors.password_repeat && <p>{errors.password_repeat.message}</p>} */}
 
+                <label>Username</label>
+                <input
+                    placeholder="Username"
+                    name="user_name"
+                    ref={register({
+                        required: "You must specify a username."
+                    })} />
+                {errors.user_name && <p>{errors.user_name.message}</p>}
+
+                <label>Name</label>
+                <input
+                    placeholder="Name"
+                    name="name"
+                    ref={register({
+                        required: "Required"
+                    })} />
+                {errors.name && <p>{errors.name.message}</p>}
+
                 <input type="submit" />
             </form>
         </div >
@@ -82,4 +102,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { login })(LoginPage);
+export default connect(mapStateToProps, { registerAction })(RegisterPage);

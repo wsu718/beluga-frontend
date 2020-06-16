@@ -33,7 +33,7 @@ const mobileMenu = ({ toggleMobileMenu }) => {
                         </NavLink>
                     </div>
                     <div>
-                        <NavLink to='/' className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out">
+                        <NavLink to='/login' className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out">
                             Log in
                         </NavLink>
                     </div>

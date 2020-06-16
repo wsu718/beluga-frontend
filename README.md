@@ -1,17 +1,32 @@
-This is the frontend for Beluga.
+# Beluga frontend documentation 
 
-**branch/deployment structure** 
+## Branch/deployment structure
 
-**production**
-Deploys to beluga-alpha.now.sh for now.
-When we’re ready to have users, will deploy to alpha.getbeluga.com.
+Branch: **Landing**  
+Deploys to: https://www.getbeluga.com.  
+This is a simple email capture form.  
 
-**staging**
-Deploys to beluga-alpha-staging.now.sh for now.
+Branch: **Production**  
+Deploys to: https://beluga-alpha.now.sh.  
+(When we’re ready for users, will deploy to alpha.getbeluga.com.
 
-**landing**
-Deploys to www.getbeluga.com
-Email capture form. 
+Branch: **Staging**  
+Deploys to: https://beluga-alpha-staging.now.sh.  
 
-**feature branches**
-We work from feature branches. 
+---
+
+## Folder structure:  
+
+**/pages**  
+Contains views that have routes  
+
+**/components**  
+Reusable components  
+
+---
+
+## Pages:
+
+/login  
+/register  
+/app  

@@ -8,7 +8,7 @@ const Feed = ({ posts, getPosts }) => {
 
     useEffect(() => {
         getPosts();
-    }, []);
+    }, [getPosts]);
 
     return (
         <div className="pt-4">

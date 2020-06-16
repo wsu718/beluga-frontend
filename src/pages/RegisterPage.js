@@ -10,7 +10,7 @@ const RegisterPage = ({ auth, registerAction }) => {
 
     let history = useHistory();
 
-    const { register, handleSubmit, errors, watch } = useForm();
+    const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = data => registerAction(data);
 
@@ -20,7 +20,7 @@ const RegisterPage = ({ auth, registerAction }) => {
         if (auth.isLoggedIn) {
             history.push('/app');
         }
-    }, [auth.isLoggedIn])
+    }, [auth.isLoggedIn, history])
 
     // console.log(auth.isLoading)
     // const password = useRef({});

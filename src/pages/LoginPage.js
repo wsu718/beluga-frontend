@@ -10,7 +10,7 @@ const LogInPage = ({ auth, login }) => {
 
     let history = useHistory();
 
-    const { register, handleSubmit, errors, watch } = useForm();
+    const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = data => login(data);
 
@@ -18,7 +18,7 @@ const LogInPage = ({ auth, login }) => {
         if (auth.isLoggedIn) {
             history.push('/app');
         }
-    }, [auth.isLoggedIn])
+    }, [auth.isLoggedIn, history])
 
     // console.log(auth.isLoading)
     // const password = useRef({});

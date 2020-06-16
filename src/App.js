@@ -5,7 +5,7 @@ import LandingPage from './pages/LandingPage';
 import AppPage from './pages/AppPage';
 import PostPage from './pages/PostPage';
 import RegisterPage from './pages/RegisterPage';
-import LogInPage from './pages/LogInPage';
+import LoginPage from './pages/LoginPage';
 
 import './tailwind.generated.css';
 
@@ -18,7 +18,7 @@ function App() {
           <LandingPage />
         </Route>
         <Route path="/login">
-          <LogInPage />
+          <LoginPage />
         </Route>
         <Route path="/register">
           <RegisterPage />

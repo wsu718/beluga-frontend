@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import { login } from '../state/actions/index';
 
-const LogInPage = ({ auth, login }) => {
+const LoginPage = ({ auth, login }) => {
 
     let history = useHistory();
 
@@ -82,4 +82,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { login })(LogInPage);
+export default connect(mapStateToProps, { login })(LoginPage);

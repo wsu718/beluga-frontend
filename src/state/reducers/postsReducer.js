@@ -7,7 +7,6 @@ import {
 
 const initialState = {
     isLoading: false,
-    isFetchingData: false,
     error: '',
     data: [
         {

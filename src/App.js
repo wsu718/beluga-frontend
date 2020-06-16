@@ -2,18 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage';
 import AppPage from './pages/AppPage';
 import PostPage from './pages/PostPage';
+import RegisterPage from './pages/RegisterPage';
+import LogInPage from './pages/LogInPage';
 
 import './tailwind.generated.css';
 
 function App() {
-
-  // const handleClick = () => {
-  //   // dispatch({ type: "INCREASE_VOTE_COUNT" })
-  //   console.log('click')
-  // }
 
   return (
     <Router>
@@ -22,7 +18,10 @@ function App() {
           <LandingPage />
         </Route>
         <Route path="/login">
-          <LoginPage />
+          <LogInPage />
+        </Route>
+        <Route path="/register">
+          <RegisterPage />
         </Route>
         <Route path="/app">
           <AppPage />

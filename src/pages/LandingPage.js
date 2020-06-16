@@ -64,7 +64,7 @@ const LandingPage = () => {
                     <div className="hidden md:block text-right">
                         <span className="inline-flex rounded-md shadow-md">
                             <span className="inline-flex rounded-md shadow-xs">
-                                <NavLink to='/' className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+                                <NavLink to='/login' className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
                                     Log in
                                 </NavLink>
                             </span>

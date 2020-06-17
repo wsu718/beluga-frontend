@@ -1,12 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const CreatePost = () => {
+import { connect } from 'react-redux';
+import { addPost } from '../state/actions'
+
+const CreatePost = ({ addPost }) => {
 
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = data => {
-        console.log(data)
+    const onSubmit = post => {
+        // console.log(post)
+        addPost(post)
     }
 
     return (
@@ -16,7 +20,7 @@ const CreatePost = () => {
                 </label>
                 <div className="mt-1 sm:mt-0 sm:col-span-2">
                     <div className="max-w-lg flex rounded-md shadow-sm">
-                        <textarea name="post" rows="3" className="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="What are you thinking about?" ref={register}></textarea>
+                        <textarea name="header" rows="3" className="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="What are you thinking about?" ref={register}></textarea>
                     </div>
                 </div>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded">Post</button>
@@ -25,4 +29,4 @@ const CreatePost = () => {
     );
 }
 
-export default CreatePost;
+export default connect(null, { addPost })(CreatePost);

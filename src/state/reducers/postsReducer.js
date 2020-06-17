@@ -1,32 +1,26 @@
 import {
     GET_POSTS_START,
     GET_POSTS_FAILURE,
-    GET_POSTS_SUCCESS
+    GET_POSTS_SUCCESS,
+    GET_POST_BY_ID_START,
+    GET_POST_BY_ID_FAILURE,
+    GET_POST_BY_ID_SUCCESS,
+    ADD_POST_FAILURE,
+    ADD_POST_START,
+    ADD_POST_SUCCESS,
+    EDIT_POST_FAILURE,
+    EDIT_POST_START,
+    EDIT_POST_SUCCESS,
+    DELETE_POST_START,
+    DELETE_POST_SUCCESS,
+    DELETE_POST_FAILURE
 } from "../actions"
 
 
 const initialState = {
-    isLoading: false,
+    isFetchingData: false,
     error: '',
-    data: [
-        {
-            id: 2111,
-            header: "sample header5",
-            body: "can be null5",
-            user: 1,
-            createdAt: "2020-06-11T21:32:13.625Z",
-            updatedAt: "2020-06-11T21:32:13.625Z",
-            comments: [
-                {
-                    id: 7,
-                    body: "adding a comment",
-                    userId: 1,
-                    createdAt: "2020-06-11T21:32:22.708Z",
-                    updatedAt: "2020-06-11T21:32:22.708Z"
-                }
-            ]
-        }
-    ]
+    data: []
 };
 
 export const postsReducer = (state = initialState, action) => {
@@ -35,16 +29,94 @@ export const postsReducer = (state = initialState, action) => {
         case GET_POSTS_START:
             return {
                 ...state,
-                isFetchingData: false
+                isFetchingData: true
             }
         case GET_POSTS_SUCCESS:
             return {
                 ...state,
-                isFetchingData: true,
+                isFetchingData: false,
                 error: '',
                 data: action.payload
             }
         case GET_POSTS_FAILURE:
+            return {
+                ...state,
+                isFetchingData: false,
+                error: action.payload
+            }
+        case GET_POST_BY_ID_START:
+            return {
+                ...state,
+                isFetchingData: true
+            }
+        case GET_POST_BY_ID_SUCCESS:
+            return {
+                ...state,
+                isFetchingData: false,
+                data: [action.payload]
+            }
+        case GET_POST_BY_ID_FAILURE:
+            return {
+                ...state,
+                isFetchingData: false,
+                error: action.payload
+            }
+        case ADD_POST_FAILURE:
+            return {
+                ...state,
+                isFetchingData: false,
+                error: action.payload
+            }
+        case ADD_POST_START:
+            return {
+                ...state,
+                isFetchingData: true
+            }
+        case ADD_POST_SUCCESS:
+            return {
+                ...state,
+                isFetchingData: false,
+                data: [
+                    ...state.data,
+                    action.payload
+                ]
+            }
+        case EDIT_POST_FAILURE:
+            return {
+                ...state,
+                isFetchingData: false,
+                error: action.payload
+            }
+        case EDIT_POST_START:
+            return {
+                ...state,
+                isFetchingData: true
+            }
+        case EDIT_POST_SUCCESS:
+            return {
+                ...state,
+                isFetchingData: false,
+                data: state.data.map(item => {
+                    if (item.id === action.payload.id) {
+                        return { ...action.payload }
+                    }
+                    return item
+                })
+            }
+        case DELETE_POST_START:
+            return {
+                ...state,
+                isFetchingData: true
+            }
+        case DELETE_POST_SUCCESS:
+            return {
+                ...state,
+                isFetchingData: false,
+                data: [
+                    ...state.data.filter(data => data.id !== action.payload.id)
+                ]
+            }
+        case DELETE_POST_FAILURE:
             return {
                 ...state,
                 isFetchingData: false,

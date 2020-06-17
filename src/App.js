@@ -6,6 +6,8 @@ import AppPage from './pages/AppPage';
 import PostPage from './pages/PostPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import EditPostPage from './pages/EditPostPage';
+
 
 import './tailwind.generated.css';
 
@@ -25,6 +27,9 @@ function App() {
         </Route>
         <Route path="/app">
           <AppPage />
+        </Route>
+        <Route exact path="/posts/:id/edit">
+          <EditPostPage />
         </Route>
         <Route path="/posts/:id">
           <PostPage />

@@ -8,6 +8,8 @@ const TopNav = () => {
     const logout = () => {
         console.log('logout')
         // sessionStorage.removeItem('token');
+        // document.cookie?
+        // add an action to do a get request
         // history.push('/');
     }
 

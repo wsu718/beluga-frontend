@@ -1,21 +1,35 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import { getPostByID } from '../state/actions/index';
+import { connect, useSelector } from 'react-redux';
+import { getPostByID, deletePost } from '../state/actions/index';
 
 // import CommentCard from '../components/CommentCard';
 import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
 import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
 import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 
-const PostPage = ({ posts, getPostByID }) => {
+const PostPage = ({ posts, getPostByID, deletePost }) => {
+
+    let history = useHistory();
+
     const { id } = useParams();
-    const post = posts.data.find(post => post.id === Number(id))
+    // const post = posts.data.find(post => post.id === Number(id))
+    const post = useSelector(state => state.posts.data.find(post => post.id === Number(id)));
 
     useEffect(() => {
         getPostByID(id)
     }, [id, getPostByID])
+
+    const handleDelete = () => {
+        console.log(post.id)
+        deletePost(post.id)
+    }
+
+    const handleEdit = () => {
+        history.push(`/posts/${post.id}/edit`)
+        // history.push(`/app`)
+    }
 
     return (
 
@@ -42,6 +56,8 @@ const PostPage = ({ posts, getPostByID }) => {
                     {/* <p className="ml-6">{post.comments.length}</p> */}
                     <p><IconComment /></p>
                 </div>
+                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleEdit}>Edit</button>
             </div>
 
             {/* Comments */}
@@ -56,8 +72,8 @@ const PostPage = ({ posts, getPostByID }) => {
 
 const mapStateToProps = state => {
     return {
-        posts: state.posts
+        // posts: state.posts
     }
 }
 
-export default connect(mapStateToProps, { getPostByID })(PostPage);
+export default connect(mapStateToProps, { getPostByID, deletePost })(PostPage);

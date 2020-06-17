@@ -1,9 +1,9 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 const TopNav = () => {
 
-    let history = useHistory();
+    // let history = useHistory();
 
     const logout = () => {
         console.log('logout')

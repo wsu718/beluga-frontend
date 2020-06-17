@@ -15,7 +15,6 @@ import {
     DELETE_POST_SUCCESS,
     DELETE_POST_FAILURE
 } from "../actions"
-import { data } from "autoprefixer";
 
 
 const initialState = {
@@ -51,12 +50,10 @@ export const postsReducer = (state = initialState, action) => {
                 isFetchingData: true
             }
         case GET_POST_BY_ID_SUCCESS:
-            console.log(action.payload.id)
             return {
                 ...state,
                 isFetchingData: false,
                 data: [action.payload]
-
             }
         case GET_POST_BY_ID_FAILURE:
             return {
@@ -116,7 +113,7 @@ export const postsReducer = (state = initialState, action) => {
                 ...state,
                 isFetchingData: false,
                 data: [
-                    // ...state.data.filter(data => data.id !== id)
+                    ...state.data.filter(data => data.id !== action.payload.id)
                 ]
             }
         case DELETE_POST_FAILURE:

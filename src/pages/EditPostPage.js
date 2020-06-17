@@ -2,13 +2,10 @@ import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { connect, useSelector } from 'react-redux';
-import { getPostByID, deletePost } from '../state/actions/index';
+import { getPostByID } from '../state/actions/index';
 import { editPost } from '../state/actions/index'
 
 // import CommentCard from '../components/CommentCard';
-import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
-import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
-import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 
 
 const EditPostPage = ({ editPost, getPostByID }) => {
@@ -16,31 +13,25 @@ const EditPostPage = ({ editPost, getPostByID }) => {
 
     const post = useSelector(state => state.posts.data.find(post => post.id === Number(id)));
 
-    console.log(post)
     const { register, handleSubmit, reset } = useForm({
         defaultValues: post
     });
 
-    // let history = useHistory();
+    let history = useHistory();
 
     useEffect(() => {
         getPostByID(id)
-    }, []) // eslint-disable-line
+    }, [id, getPostByID])
 
 
     useEffect(() => {
         if (post) {
             reset(post)
         }
-    }, [post])
-
-
-    const handleEdit = () => {
-        console.log('edit')
-    }
+    }, [post, reset])
 
     const handleCancel = () => {
-        console.log('cancel')
+        history.goBack()
     }
 
     const onSubmit = data => {
@@ -69,7 +60,7 @@ const EditPostPage = ({ editPost, getPostByID }) => {
                     </div>
 
                     <button onClick={handleCancel}>Cancel</button>
-                    <button onClick={handleEdit}>Save</button>
+                    <button type="submit" >Save</button>
                 </div>
             </form>
         </div>

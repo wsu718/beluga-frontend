@@ -85,7 +85,7 @@ export const deletePost = id => dispatch => {
     axios
         .delete(`https://beluga-dev.herokuapp.com/api/posts`, id)
         .then(res =>
-            dispatch({ type: DELETE_POST_SUCCESS, payload: id })
+            dispatch({ type: DELETE_POST_SUCCESS, payload: res.data })
         )
         .catch(err =>
             dispatch({ type: DELETE_POST_FAILURE, payload: err.response })

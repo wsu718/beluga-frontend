@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+// import axios from 'axios';
+// import Cookies from 'universal-cookie';
 
 import { connect } from 'react-redux';
 
@@ -8,17 +10,33 @@ import { login } from '../state/actions/index';
 
 const LoginPage = ({ auth, login }) => {
 
+    console.log(process.env.REACT_APP_API_URL)
+
     let history = useHistory();
 
     const { register, handleSubmit, errors } = useForm();
 
+
     const onSubmit = data => login(data);
+
+    // Test here to use hooks to set cookies
+    // const cookies = new Cookies();
+    // const onSubmit = data => {
+    //     axios
+    //         .post("http://localhost:5000/api/login", data)
+    //         .then(res => {
+    //             console.log(res)
+    //             // cookies.set('cookie',)
+    //         })
+    // }
+    // console.log(cookies.get('cookie'))
 
     useEffect(() => {
         if (auth.isLoggedIn) {
             history.push('/app');
         }
     }, [auth.isLoggedIn, history])
+
 
     // console.log(auth.isLoading)
     // const password = useRef({});

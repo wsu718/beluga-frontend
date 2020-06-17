@@ -11,7 +11,7 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const login = data => dispatch => {
     dispatch({ type: LOGIN_START });
     return axios
-        .post("https://beluga-dev.herokuapp.com/api/login", data)
+        .post(`${process.env.REACT_APP_API_URL}/api/login`, data)
         .then(res => {
             console.log(res)
             dispatch({
@@ -30,7 +30,7 @@ export const login = data => dispatch => {
 export const registerAction = data => dispatch => {
     dispatch({ type: REGISTER_START });
     return axios
-        .post("https://beluga-dev.herokuapp.com/api/register", data)
+        .post(`${process.env.REACT_APP_API_URL}/api/register`, data)
         .then(res => {
             dispatch({
                 type: REGISTER_SUCCESS,

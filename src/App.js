@@ -1,13 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import LandingPage from './pages/LandingPage';
-import AppPage from './pages/AppPage';
-import PostPage from './pages/PostPage';
+import Dashboard from './pages/Dashboard';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
-import EditPostPage from './pages/EditPostPage';
-
 
 import './tailwind.generated.css';
 
@@ -16,23 +12,19 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <LandingPage />
-        </Route>
+        </Route> */}
         <Route path="/login">
           <LoginPage />
         </Route>
         <Route path="/register">
           <RegisterPage />
         </Route>
-        <Route path="/app">
-          <AppPage />
-        </Route>
-        <Route exact path="/posts/:id/edit">
-          <EditPostPage />
-        </Route>
-        <Route path="/posts/:id">
-          <PostPage />
+
+        {/* This is going to be "/" after we have cookies working */}
+        <Route path="/">
+          <Dashboard />
         </Route>
       </Switch>
     </Router>

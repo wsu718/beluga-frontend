@@ -15,7 +15,7 @@ const PostCard = ({ post }) => {
             </div>
 
             <div className="my-4">
-                <p><Link to={`/posts/${post.id}`}>{post.header}</Link></p>
+                <p><Link to={`app/posts/${post.id}`}>{post.header}</Link></p>
             </div>
 
             <div className="flex my-4">
@@ -25,6 +25,12 @@ const PostCard = ({ post }) => {
                 <p className="ml-6">{post.comments?.length}</p>
                 <p><IconComment /></p>
             </div>
+
+
+
+            {/* <Route path={`/posts/:id`} component={PostPage} /> */}
+
+
         </div>
     )
 }

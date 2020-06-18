@@ -32,6 +32,8 @@ export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 // export const DELETE_COMMENT_SUCCESS = 'DELETE_COMMENT_SUCCESS';
 // export const DELETE_COMMENT_FAILURE = 'DELETE_COMMENT_FAILURE';
 
+axios.defaults.withCredentials = true
+
 export const getPosts = () => dispatch => {
     dispatch({ type: GET_POSTS_START })
     axios

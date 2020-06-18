@@ -35,7 +35,7 @@ export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 export const getPosts = () => dispatch => {
     dispatch({ type: GET_POSTS_START })
     axios
-        .get(`${process.env.REACT_APP_API_URL}/api/posts`)
+        .get(`${process.env.REACT_APP_API_URL}/api/posts`, { withCredentials: true })
         .then(res =>
             dispatch({ type: GET_POSTS_SUCCESS, payload: res.data })
         )

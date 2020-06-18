@@ -11,7 +11,7 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const login = data => dispatch => {
     dispatch({ type: LOGIN_START });
     return axios
-        .post(`${process.env.REACT_APP_API_URL}/api/login`, data)
+        .post(`${process.env.REACT_APP_API_URL}/api/login`, data, { withCredentials: true })
         .then(res => {
             console.log(res)
             dispatch({
@@ -22,7 +22,7 @@ export const login = data => dispatch => {
         .catch(err => {
             dispatch({
                 type: LOGIN_FAILURE,
-                payload: err.response.data,
+                payload: err.response,
             });
         });
 };

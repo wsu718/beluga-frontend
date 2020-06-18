@@ -13,7 +13,7 @@ axios.defaults.withCredentials = true
 export const login = data => dispatch => {
     dispatch({ type: LOGIN_START });
     return axios
-        .post(`${process.env.REACT_APP_API_URL}/api/login`, data, { withCredentials: true })
+        .post(`${process.env.REACT_APP_API_URL}/api/login`, data)
         .then(res => {
             console.log(res)
             dispatch({

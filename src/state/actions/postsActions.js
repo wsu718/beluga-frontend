@@ -62,7 +62,7 @@ export const addPost = data => dispatch => {
     axios.defaults.withCredentials = true
     dispatch({ type: ADD_POST_START, data })
     axios
-        .post(`${process.env.REACT_APP_API_URL}/api/posts`)
+        .post(`${process.env.REACT_APP_API_URL}/api/posts`, data)
         .then(res =>
             dispatch({ type: ADD_POST_SUCCESS, payload: res.data })
         )
@@ -75,7 +75,7 @@ export const editPost = data => dispatch => {
     axios.defaults.withCredentials = true
     dispatch({ type: EDIT_POST_START, data })
     axios
-        .put(`${process.env.REACT_APP_API_URL}/api/posts`)
+        .put(`${process.env.REACT_APP_API_URL}/api/posts`, data)
         .then(res =>
             dispatch({ type: EDIT_POST_SUCCESS, payload: res.data })
         )

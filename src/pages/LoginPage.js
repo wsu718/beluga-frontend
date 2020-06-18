@@ -10,8 +10,6 @@ import { login } from '../state/actions/index';
 
 const LoginPage = ({ auth, login }) => {
 
-    console.log(process.env.REACT_APP_API_URL)
-
     let history = useHistory();
 
     const { register, handleSubmit, errors } = useForm();

@@ -35,7 +35,7 @@ export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 export const getPosts = () => dispatch => {
     dispatch({ type: GET_POSTS_START })
     axios
-        .get(`https://beluga-dev.herokuapp.com/api/posts`)
+        .get(`${process.env.REACT_APP_API_URL}/api/posts`)
         .then(res =>
             dispatch({ type: GET_POSTS_SUCCESS, payload: res.data })
         )
@@ -47,7 +47,7 @@ export const getPosts = () => dispatch => {
 export const getPostByID = id => dispatch => {
     dispatch({ type: GET_POST_BY_ID_START, id })
     axios
-        .get(`https://beluga-dev.herokuapp.com/api/posts?post=${id}`)
+        .get(`${process.env.REACT_APP_API_URL}/api/posts?post=${id}`)
         .then(res =>
             dispatch({ type: GET_POST_BY_ID_SUCCESS, payload: res.data })
         )
@@ -59,7 +59,7 @@ export const getPostByID = id => dispatch => {
 export const addPost = data => dispatch => {
     dispatch({ type: ADD_POST_START, data })
     axios
-        .post(`https://beluga-dev.herokuapp.com/api/posts`)
+        .post(`${process.env.REACT_APP_API_URL}/api/posts`)
         .then(res =>
             dispatch({ type: ADD_POST_SUCCESS, payload: res.data })
         )
@@ -71,7 +71,7 @@ export const addPost = data => dispatch => {
 export const editPost = data => dispatch => {
     dispatch({ type: EDIT_POST_START, data })
     axios
-        .put(`https://beluga-dev.herokuapp.com/api/posts`)
+        .put(`${process.env.REACT_APP_API_URL}/api/posts`)
         .then(res =>
             dispatch({ type: EDIT_POST_SUCCESS, payload: res.data })
         )
@@ -83,7 +83,7 @@ export const editPost = data => dispatch => {
 export const deletePost = id => dispatch => {
     dispatch({ type: DELETE_POST_START, id })
     axios
-        .delete(`https://beluga-dev.herokuapp.com/api/posts`, id)
+        .delete(`${process.env.REACT_APP_API_URL}/api/posts`, id)
         .then(res =>
             dispatch({ type: DELETE_POST_SUCCESS, payload: res.data })
         )

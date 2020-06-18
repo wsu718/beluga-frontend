@@ -8,6 +8,8 @@ export const REGISTER_START = 'REGISTER_START';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
+axios.defaults.withCredentials = true
+
 export const login = data => dispatch => {
     dispatch({ type: LOGIN_START });
     return axios

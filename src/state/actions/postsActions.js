@@ -37,7 +37,7 @@ axios.defaults.withCredentials = true
 export const getPosts = () => dispatch => {
     dispatch({ type: GET_POSTS_START })
     axios
-        .get(`${process.env.REACT_APP_API_URL}/api/posts`, { withCredentials: true })
+        .get(`${process.env.REACT_APP_API_URL}/api/posts`)
         .then(res =>
             dispatch({ type: GET_POSTS_SUCCESS, payload: res.data })
         )

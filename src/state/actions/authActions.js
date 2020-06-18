@@ -8,9 +8,12 @@ export const REGISTER_START = 'REGISTER_START';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
-axios.defaults.withCredentials = true
+
 
 export const login = data => dispatch => {
+
+    axios.defaults.withCredentials = true
+
     dispatch({ type: LOGIN_START });
     return axios
         .post(`${process.env.REACT_APP_API_URL}/api/login`, data)
@@ -30,6 +33,9 @@ export const login = data => dispatch => {
 };
 
 export const registerAction = data => dispatch => {
+
+    axios.defaults.withCredentials = true
+
     dispatch({ type: REGISTER_START });
     return axios
         .post(`${process.env.REACT_APP_API_URL}/api/register`, data)

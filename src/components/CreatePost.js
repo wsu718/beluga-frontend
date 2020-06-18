@@ -9,7 +9,7 @@ const CreatePost = ({ addPost }) => {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = post => {
-        // console.log(post)
+        console.log(post)
         addPost(post)
     }
 

@@ -32,9 +32,8 @@ export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 // export const DELETE_COMMENT_SUCCESS = 'DELETE_COMMENT_SUCCESS';
 // export const DELETE_COMMENT_FAILURE = 'DELETE_COMMENT_FAILURE';
 
-axios.defaults.withCredentials = true
-
 export const getPosts = () => dispatch => {
+    axios.defaults.withCredentials = true
     dispatch({ type: GET_POSTS_START })
     axios
         .get(`${process.env.REACT_APP_API_URL}/api/posts`)
@@ -47,6 +46,7 @@ export const getPosts = () => dispatch => {
 }
 
 export const getPostByID = id => dispatch => {
+    axios.defaults.withCredentials = true
     dispatch({ type: GET_POST_BY_ID_START, id })
     axios
         .get(`${process.env.REACT_APP_API_URL}/api/posts?post=${id}`)
@@ -59,6 +59,7 @@ export const getPostByID = id => dispatch => {
 }
 
 export const addPost = data => dispatch => {
+    axios.defaults.withCredentials = true
     dispatch({ type: ADD_POST_START, data })
     axios
         .post(`${process.env.REACT_APP_API_URL}/api/posts`)
@@ -71,6 +72,7 @@ export const addPost = data => dispatch => {
 }
 
 export const editPost = data => dispatch => {
+    axios.defaults.withCredentials = true
     dispatch({ type: EDIT_POST_START, data })
     axios
         .put(`${process.env.REACT_APP_API_URL}/api/posts`)
@@ -83,6 +85,7 @@ export const editPost = data => dispatch => {
 }
 
 export const deletePost = id => dispatch => {
+    axios.defaults.withCredentials = true
     dispatch({ type: DELETE_POST_START, id })
     axios
         .delete(`${process.env.REACT_APP_API_URL}/api/posts`, id)

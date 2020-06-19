@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-import MobileMenu from '../components/MobileMenu'
+import MobileMenu from '../components/LandingMobileMenu'
 
 // import Logo from '../images/logo.svg';
 // import Whale1 from '../images/whale-1.svg'
@@ -124,38 +124,7 @@ const LandingPage = () => {
                     </div>
                 </div>
 
-                <div className="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24 border-t border-gray-200 pt-8">
 
-                    <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6">
-
-                        <h3 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl">
-                            Our manifesto
-                        </h3>
-
-                        <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                            We believe in purpose over profit. Our goal is to help people become closer, and to share knowledge.
-                        </p>
-
-                        <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                            Beluga is highly curated. Quality > quantity. Together we’ll maintain high standards.
-                        </p>
-
-                        <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                            Beluga is opinionated. Be civil, insightful, helpful, and positive.
-                        </p>
-
-                        <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                            You are accountable. What you say matters.
-                        </p>
-
-                        <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                            Beluga is built for thoughtful, meaningful conversations and for forming tight-knit relationships.
-                        </p>
-
-                    </div>
-
-
-                </div>
             </div>
         </div >
     )

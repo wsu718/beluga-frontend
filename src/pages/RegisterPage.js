@@ -18,7 +18,7 @@ const RegisterPage = ({ auth, registerAction }) => {
 
     useEffect(() => {
         if (auth.isLoggedIn) {
-            history.push('/app');
+            history.push('/login');
         }
     }, [auth.isLoggedIn, history])
 

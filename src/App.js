@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import LandingPage from './pages/LandingPage';
 
 import './tailwind.generated.css';
 
@@ -12,9 +13,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        {/* <Route exact path="/">
+        <Route exact path="/">
           <LandingPage />
-        </Route> */}
+        </Route>
         <Route path="/login">
           <LoginPage />
         </Route>
@@ -23,7 +24,7 @@ function App() {
         </Route>
 
         {/* This is going to be "/" after we have cookies working */}
-        <Route path="/">
+        <Route path="/app">
           <Dashboard />
         </Route>
       </Switch>

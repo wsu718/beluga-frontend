@@ -27,7 +27,7 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
     }
 
     const handleEdit = () => {
-        history.push(`/posts/${post.id}/edit`)
+        history.push(`/app/posts/${post.id}/edit`)
         // history.push(`/app`)
     }
 

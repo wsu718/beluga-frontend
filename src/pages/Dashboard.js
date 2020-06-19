@@ -5,6 +5,7 @@ import TopNav from '../components/TopNav';
 import { FeedContainer } from './FeedContainer'
 
 import PostPage from './PostPage';
+import EditPostPage from './EditPostPage'
 
 
 const Dashboard = () => {
@@ -17,11 +18,14 @@ const Dashboard = () => {
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div className="px-4 py-2 sm:px-0">
                             <Switch>
-                                <Route path="/">
-                                    <FeedContainer />
+                                <Route exact path="/app/posts/:id/edit">
+                                    <EditPostPage />
                                 </Route>
-                                <Route path="/posts/:id">
+                                <Route exact path="/app/posts/:id">
                                     <PostPage />
+                                </Route>
+                                <Route path="/app/">
+                                    <FeedContainer />
                                 </Route>
                             </Switch>
                         </div>

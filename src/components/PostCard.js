@@ -15,7 +15,7 @@ const PostCard = ({ post }) => {
             </div>
 
             <div className="my-4">
-                <p><Link to={`app/posts/${post.id}`}>{post.header}</Link></p>
+                <p><Link to={`/app/posts/${post.id}`}>{post.header}</Link></p>
             </div>
 
             <div className="flex my-4">

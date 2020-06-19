@@ -67,11 +67,11 @@ export const addPost = (data) => (dispatch) => {
     );
 };
 
-export const editPost = (data) => (dispatch) => {
+export const editPost = (post_id, data) => (dispatch) => {
   axios.defaults.withCredentials = true;
   dispatch({ type: EDIT_POST_START });
   axios
-    .put(`${process.env.REACT_APP_API_URL}/api/posts`, data)
+    .put(`${process.env.REACT_APP_API_URL}/api/posts?post=${post_id}`, data)
     .then((res) => dispatch({ type: EDIT_POST_SUCCESS, payload: res.data }))
     .catch((err) =>
       dispatch({ type: EDIT_POST_FAILURE, payload: err.response })

@@ -17,6 +17,9 @@ import {
   ADD_POST_COMMENT_START,
   ADD_POST_COMMENT_SUCCESS,
   ADD_POST_COMMENT_FAILURE,
+  ADD_COMMENT_COMMENT_START,
+  ADD_COMMENT_COMMENT_SUCCESS,
+  ADD_COMMENT_COMMENT_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -137,6 +140,31 @@ export const postsReducer = (state = initialState, action) => {
       };
 
     case ADD_POST_COMMENT_FAILURE:
+      return {
+        ...state,
+        isFetchingData: false,
+        error: action.payload,
+      };
+    case ADD_COMMENT_COMMENT_START:
+      return {
+        ...state,
+        isFetchingData: true,
+      };
+    // need to be modified to accept the single new comment
+    case ADD_COMMENT_COMMENT_SUCCESS:
+      return {
+        ...state,
+        isFetchingData: false,
+        data: [
+          {
+            ...state.data[0],
+
+            comments: [...state.data[0].comments],
+          },
+        ],
+      };
+
+    case ADD_COMMENT_COMMENT_FAILURE:
       return {
         ...state,
         isFetchingData: false,

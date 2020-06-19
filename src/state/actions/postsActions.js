@@ -26,6 +26,10 @@ export const ADD_POST_COMMENT_START = 'ADD_POST_COMMENT_START';
 export const ADD_POST_COMMENT_SUCCESS = 'ADD_POST_COMMENT_SUCCESS';
 export const ADD_POST_COMMENT_FAILURE = 'ADD_POST_COMMENT_FAILURE';
 
+export const ADD_COMMENT_COMMENT_START = 'ADD_POST_COMMENT_START';
+export const ADD_COMMENT_COMMENT_SUCCESS = 'ADD_POST_COMMENT_SUCCESS';
+export const ADD_COMMENT_COMMENT_FAILURE = 'ADD_POST_COMMENT_FAILURE';
+
 // export const EDIT_COMMENT_START = 'EDIT_COMMENT_START';
 // export const EDIT_COMMENT_SUCCESS = 'EDIT_COMMENT_SUCCESS';
 // export const EDIT_COMMENT_FAILURE = 'EDIT_COMMENT_FAILURE';
@@ -108,5 +112,22 @@ export const addPostComment = (post_id, data) => (dispatch) => {
     )
     .catch((err) =>
       dispatch({ type: ADD_POST_COMMENT_FAILURE, payload: err.response })
+    );
+};
+
+// ============ ADD A COMMENT TO A COMMENT ============ //
+export const addCommentComment = (comment_id, data) => (dispatch) => {
+  axios.defaults.withCredentials = true;
+  dispatch({ type: ADD_COMMENT_COMMENT_START });
+  axios
+    .post(
+      `${process.env.REACT_APP_API_URL}/api/cComments?comment=${comment_id}`,
+      data
+    )
+    .then((res) =>
+      dispatch({ type: ADD_COMMENT_COMMENT_SUCCESS, payload: res.data })
+    )
+    .catch((err) =>
+      dispatch({ type: ADD_COMMENT_COMMENT_FAILURE, payload: err.response })
     );
 };

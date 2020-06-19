@@ -14,6 +14,9 @@ import {
   DELETE_POST_START,
   DELETE_POST_SUCCESS,
   DELETE_POST_FAILURE,
+  ADD_POST_COMMENT_START,
+  ADD_POST_COMMENT_SUCCESS,
+  ADD_POST_COMMENT_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -111,6 +114,29 @@ export const postsReducer = (state = initialState, action) => {
         data: [...state.data.filter((data) => data.id !== action.payload.id)],
       };
     case DELETE_POST_FAILURE:
+      return {
+        ...state,
+        isFetchingData: false,
+        error: action.payload,
+      };
+    case ADD_POST_COMMENT_START:
+      return {
+        ...state,
+        isFetchingData: true,
+      };
+    case ADD_POST_COMMENT_SUCCESS:
+      return {
+        ...state,
+        isFetchingData: false,
+        data: [
+          {
+            ...state.data[0],
+            comments: [...state.data[0].comments, action.payload],
+          },
+        ],
+      };
+
+    case ADD_POST_COMMENT_FAILURE:
       return {
         ...state,
         isFetchingData: false,

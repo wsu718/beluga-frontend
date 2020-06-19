@@ -8,6 +8,7 @@ import CommentCard from '../components/CommentCard';
 import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
 import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
 import { ReactComponent as IconComment } from '../images/icon-comment.svg';
+import CreatePostComment from '../components/CreatePostComment';
 
 const PostPage = ({ posts, getPostByID, deletePost }) => {
   let history = useHistory();
@@ -18,7 +19,7 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
   const post = useSelector((state) =>
     state.posts.data.find((post) => post.id === Number(id))
   );
-
+  console.log(post);
   useEffect(() => {
     getPostByID(id);
   }, [id, getPostByID]);
@@ -57,7 +58,7 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
           <p>
             <IconArrowDown onClick={() => console.log('test')} />
           </p>
-          {/* <p className="ml-6">{post.comments.length}</p> */}
+          <p className='ml-6'>{post?.comments.length}</p>
           <p>
             <IconComment />
           </p>
@@ -73,6 +74,10 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
             <CommentCard comment={comment} key={comment.id} />
           ))}
         {}
+      </div>
+      {/* Comment on a post */}
+      <div>
+        <CreatePostComment post_id={post?.id} />
       </div>
     </div>
   );

@@ -80,6 +80,7 @@ export const editPost = (data) => (dispatch) => {
 
 export const deletePost = (id) => (dispatch) => {
   axios.defaults.withCredentials = true;
+
   dispatch({ type: DELETE_POST_START });
   axios
     .delete(`${process.env.REACT_APP_API_URL}/api/posts?post=${id}`)

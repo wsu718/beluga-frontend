@@ -25,13 +25,13 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
   }, [id, getPostByID]);
 
   const handleDelete = () => {
-    console.log(post.id);
-    deletePost(post.id);
+    console.log(id);
+    deletePost(id);
+    history.push(`/app`)
   };
 
   const handleEdit = () => {
     history.push(`/app/posts/${post.id}/edit`);
-    // history.push(`/app`)
   };
 
   return (
@@ -58,7 +58,7 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
           <p>
             <IconArrowDown onClick={() => console.log('test')} />
           </p>
-          <p className='ml-6'>{post?.comments.length}</p>
+          <p className='ml-6'>{post?.comments?.length}</p>
           <p>
             <IconComment />
           </p>

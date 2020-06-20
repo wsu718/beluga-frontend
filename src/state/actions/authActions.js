@@ -43,7 +43,25 @@ export const registerAction = (data) => (dispatch) => {
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data,
-      });
+      })
+    })
+    .then(() => {
+      dispatch({ type: LOGIN_START });
+      return axios
+        .post(`${process.env.REACT_APP_API_URL}/api/login`, data)
+        .then((res) => {
+          console.log(res);
+          dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: LOGIN_FAILURE,
+            payload: err.response,
+          });
+        });
     })
     .catch((err) => {
       dispatch({

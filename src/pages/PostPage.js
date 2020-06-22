@@ -63,7 +63,7 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
             <IconComment />
           </p>
         </div>
-        {post?.updatable ? <button onClick={handleEdit}>Edit</button> : null}
+        {post?.updateable ? <button onClick={handleEdit}>Edit</button> : null}
         {post?.deleteable ? (
           <button onClick={handleDelete}>Delete</button>
         ) : null}

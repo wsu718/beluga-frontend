@@ -27,7 +27,9 @@ const TopNav = () => {
 
                         {/* TopNav - Logo */}
                         <div className="flex-shrink-0 flex items-center">
-                            <img className="block lg:hidden h-8 w-auto" src={Logo} alt="Workflow logo" />
+                            <NavLink to="/">
+                                <img className="block lg:hidden h-8 w-auto" src={Logo} alt="Workflow logo" />
+                            </NavLink>
                         </div>
 
 

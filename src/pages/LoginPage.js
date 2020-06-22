@@ -17,17 +17,6 @@ const LoginPage = ({ auth, login }) => {
 
     const onSubmit = data => login(data);
 
-    // Test here to use hooks to set cookies
-    // const cookies = new Cookies();
-    // const onSubmit = data => {
-    //     axios
-    //         .post("http://localhost:5000/api/login", data)
-    //         .then(res => {
-    //             console.log(res)
-    //             // cookies.set('cookie',)
-    //         })
-    // }
-    // console.log(cookies.get('cookie'))
 
     useEffect(() => {
         if (auth.isLoggedIn) {
@@ -36,9 +25,6 @@ const LoginPage = ({ auth, login }) => {
     }, [auth.isLoggedIn, history])
 
 
-    // console.log(auth.isLoading)
-    // const password = useRef({});
-    // password.current = watch("password", "");
 
     return (
         <div className="flex flex-col">

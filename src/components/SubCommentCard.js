@@ -36,6 +36,8 @@ const SubCommentCard = ({ comment }) => {
             />
           </p>
         </div>
+        {comment.updateable ? <button>Edit</button> : null}
+        {comment.deleteable ? <button>Delete</button> : null}
       </div>
     </div>
   );

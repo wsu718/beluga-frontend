@@ -39,6 +39,8 @@ const CommentCard = ({ comment, handleClick }) => {
               />
             </p>
           </div>
+          {comment.updateable ? <button>Edit</button> : null}
+          {comment.deleteable ? <button>Delete</button> : null}
         </div>
       </div>
       {comment.comments && comment.comments.length > 0

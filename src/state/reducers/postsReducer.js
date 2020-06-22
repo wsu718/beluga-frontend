@@ -26,6 +26,9 @@ import {
   ADD_COMMENT_COMMENT_START,
   ADD_COMMENT_COMMENT_SUCCESS,
   ADD_COMMENT_COMMENT_FAILURE,
+  POST_VOTE_START,
+  POST_VOTE_SUCCESS,
+  POST_VOTE_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -160,12 +163,24 @@ export const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetchingData: false,
-        // data: [
-        //   {
-        //     ...state.data[0],
-        //     comments: [...state.data.comments, action.payload],
-        //   },
-        // ],
+        data: [
+          {
+            ...state.data[0],
+            comments: [
+              state.data[0].comments.map((comment) => {
+                console.log(comment.id, action.payload.updatedComment);
+                if (comment.id === action.payload.updatedComment.id) {
+                  console.log(comment);
+                  comment.body = action.payload.updatedComment.body;
+                  comment.updated_at = action.payload.updatedComment.updated_at;
+                  console.log(comment);
+                }
+                console.log('not it');
+                return comment;
+              }),
+            ],
+          },
+        ],
       };
     case EDIT_POST_COMMENT_FAILURE:
       return {
@@ -213,8 +228,27 @@ export const postsReducer = (state = initialState, action) => {
           },
         ],
       };
-
     case ADD_COMMENT_COMMENT_FAILURE:
+      return {
+        ...state,
+        isFetchingData: false,
+        error: action.payload,
+      };
+
+    case POST_VOTE_START:
+      return {
+        ...state,
+        isFetchingData: true,
+      };
+    // need to be modified to accept the single new comment
+    case POST_VOTE_SUCCESS:
+      console.log(state.data);
+      return {
+        ...state,
+        isFetchingData: false,
+      };
+
+    case POST_VOTE_FAILURE:
       return {
         ...state,
         isFetchingData: false,

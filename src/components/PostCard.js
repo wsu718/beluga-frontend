@@ -1,12 +1,22 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { postVote } from '../state/actions/index';
+
 import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
 import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
 import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, postVote }) => {
   let history = useHistory();
+
+  const handleUpvote = () => {
+    postVote(post.id, { up_vote: true });
+  };
+  const handleDownvote = () => {
+    postVote(post.id, { down_vote: true });
+  };
 
   return (
     <div className='px-6 border-b border-gray-200'>
@@ -23,10 +33,10 @@ const PostCard = ({ post }) => {
       <div className='flex my-4'>
         <p>{post.vote_count}</p>
         <p>
-          <IconArrowUp onClick={() => console.log('test')} />
+          <IconArrowUp onClick={handleUpvote} />
         </p>
         <p>
-          <IconArrowDown onClick={() => console.log('test')} />
+          <IconArrowDown onClick={handleDownvote} />
         </p>
         {/* <p className='ml-6'>{post.comments.length}</p> */}
         <p>
@@ -43,4 +53,4 @@ const PostCard = ({ post }) => {
   );
 };
 
-export default PostCard;
+export default connect(null, { postVote })(PostCard);

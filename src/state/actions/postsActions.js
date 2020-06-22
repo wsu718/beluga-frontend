@@ -38,6 +38,10 @@ export const DELETE_POST_COMMENT_START = 'DELETE_POST_COMMENT_START';
 export const DELETE_POST_COMMENT_SUCCESS = 'DELETE_POST_COMMENT_SUCCESS';
 export const DELETE_POST_COMMENT_FAILURE = 'DELETE_POST_COMMENT_FAILURE';
 
+export const POST_VOTE_START = 'POST_VOTE_START';
+export const POST_VOTE_SUCCESS = 'POST_VOTE_SUCCESS';
+export const POST_VOTE_FAILURE = 'POST_VOTE_FAILURE';
+
 // ============ ACTIONS ============ //
 
 export const getPosts = () => (dispatch) => {
@@ -118,6 +122,7 @@ export const addPostComment = (post_id, data) => (dispatch) => {
 // ============ EDIT A COMMENT ON A POST ============ //
 export const editPostComment = (comment_id, data) => (dispatch) => {
   axios.defaults.withCredentials = true;
+  console.log(comment_id);
   dispatch({ type: EDIT_POST_COMMENT_START });
   axios
     .put(
@@ -162,5 +167,17 @@ export const addCommentComment = (comment_id, data) => (dispatch) => {
     )
     .catch((err) =>
       dispatch({ type: ADD_COMMENT_COMMENT_FAILURE, payload: err.response })
+    );
+};
+
+// ============ VOTE ON A POST ============ //
+export const postVote = (post_id, data) => (dispatch) => {
+  axios.defaults.withCredentials = true;
+  dispatch({ type: POST_VOTE_START });
+  axios
+    .post(`${process.env.REACT_APP_API_URL}/api/pvotes?post=${post_id}`, data)
+    .then((res) => dispatch({ type: POST_VOTE_SUCCESS, payload: res.data }))
+    .catch((err) =>
+      dispatch({ type: POST_VOTE_FAILURE, payload: err.response })
     );
 };

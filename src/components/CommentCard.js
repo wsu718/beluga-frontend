@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
 
+import { connect } from 'react-redux';
+import { editPostComment, deletePostComment } from '../state/actions/index';
+
 import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
 import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
 import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 import CreateCommentComment from './CreateCommentComment';
 import SubCommentCard from './SubCommentCard';
+import { useHistory } from 'react-router-dom';
 
-const CommentCard = ({ comment, handleClick }) => {
+const CommentCard = ({ comment, handleClick, deletePostComment }) => {
+  let history = useHistory();
   // conditional for showing the comment form
   const [showForm, setShowForm] = useState(false);
+
+  const handleDelete = () => {
+    console.log(comment.id);
+    deletePostComment(comment.id);
+    // Where do we want to send back to
+    history.push(`/app`);
+  };
 
   return (
     <>
@@ -30,7 +42,7 @@ const CommentCard = ({ comment, handleClick }) => {
             <p>
               <IconArrowDown onClick={() => handleClick()} />
             </p>
-            <p className='ml-6'>{comment.comments.length}</p>
+            <p className='ml-6'>{comment.comments?.length}</p>
             <p>
               <IconComment
                 onClick={() => {
@@ -40,7 +52,9 @@ const CommentCard = ({ comment, handleClick }) => {
             </p>
           </div>
           {comment.updateable ? <button>Edit</button> : null}
-          {comment.deleteable ? <button>Delete</button> : null}
+          {comment.deleteable ? (
+            <button onClick={handleDelete}>Delete</button>
+          ) : null}
         </div>
       </div>
       {comment.comments && comment.comments.length > 0
@@ -59,4 +73,6 @@ const CommentCard = ({ comment, handleClick }) => {
   );
 };
 
-export default CommentCard;
+export default connect(null, { editPostComment, deletePostComment })(
+  CommentCard
+);

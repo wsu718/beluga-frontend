@@ -30,13 +30,13 @@ export const ADD_COMMENT_COMMENT_START = 'ADD_POST_COMMENT_START';
 export const ADD_COMMENT_COMMENT_SUCCESS = 'ADD_POST_COMMENT_SUCCESS';
 export const ADD_COMMENT_COMMENT_FAILURE = 'ADD_POST_COMMENT_FAILURE';
 
-// export const EDIT_COMMENT_START = 'EDIT_COMMENT_START';
-// export const EDIT_COMMENT_SUCCESS = 'EDIT_COMMENT_SUCCESS';
-// export const EDIT_COMMENT_FAILURE = 'EDIT_COMMENT_FAILURE';
+export const EDIT_POST_COMMENT_START = 'EDIT_POST_COMMENT_START';
+export const EDIT_POST_COMMENT_SUCCESS = 'EDIT_POST_COMMENT_SUCCESS';
+export const EDIT_POST_COMMENT_FAILURE = 'EDIT_POST_COMMENT_FAILURE';
 
-// export const DELETE_COMMENT_START = 'DELETE_COMMENT_START';
-// export const DELETE_COMMENT_SUCCESS = 'DELETE_COMMENT_SUCCESS';
-// export const DELETE_COMMENT_FAILURE = 'DELETE_COMMENT_FAILURE';
+export const DELETE_POST_COMMENT_START = 'DELETE_POST_COMMENT_START';
+export const DELETE_POST_COMMENT_SUCCESS = 'DELETE_POST_COMMENT_SUCCESS';
+export const DELETE_POST_COMMENT_FAILURE = 'DELETE_POST_COMMENT_FAILURE';
 
 // ============ ACTIONS ============ //
 
@@ -112,6 +112,39 @@ export const addPostComment = (post_id, data) => (dispatch) => {
     )
     .catch((err) =>
       dispatch({ type: ADD_POST_COMMENT_FAILURE, payload: err.response })
+    );
+};
+
+// ============ EDIT A COMMENT ON A POST ============ //
+export const editPostComment = (comment_id, data) => (dispatch) => {
+  axios.defaults.withCredentials = true;
+  dispatch({ type: EDIT_POST_COMMENT_START });
+  axios
+    .put(
+      `${process.env.REACT_APP_API_URL}/api/pComments?comment=${comment_id}`,
+      data
+    )
+    .then((res) =>
+      dispatch({ type: EDIT_POST_COMMENT_SUCCESS, payload: res.data })
+    )
+    .catch((err) =>
+      dispatch({ type: EDIT_POST_COMMENT_FAILURE, payload: err.response })
+    );
+};
+
+// ============ Delete A COMMENT ON A POST ============ //
+export const deletePostComment = (comment_id) => (dispatch) => {
+  axios.defaults.withCredentials = true;
+  dispatch({ type: DELETE_POST_COMMENT_START });
+  axios
+    .delete(
+      `${process.env.REACT_APP_API_URL}/api/pComments?comment=${comment_id}`
+    )
+    .then((res) =>
+      dispatch({ type: DELETE_POST_COMMENT_SUCCESS, payload: res.data })
+    )
+    .catch((err) =>
+      dispatch({ type: DELETE_POST_COMMENT_FAILURE, payload: err.response })
     );
 };
 

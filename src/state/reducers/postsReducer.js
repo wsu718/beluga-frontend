@@ -17,6 +17,12 @@ import {
   ADD_POST_COMMENT_START,
   ADD_POST_COMMENT_SUCCESS,
   ADD_POST_COMMENT_FAILURE,
+  EDIT_POST_COMMENT_START,
+  EDIT_POST_COMMENT_SUCCESS,
+  EDIT_POST_COMMENT_FAILURE,
+  DELETE_POST_COMMENT_START,
+  DELETE_POST_COMMENT_SUCCESS,
+  DELETE_POST_COMMENT_FAILURE,
   ADD_COMMENT_COMMENT_START,
   ADD_COMMENT_COMMENT_SUCCESS,
   ADD_COMMENT_COMMENT_FAILURE,
@@ -128,18 +134,62 @@ export const postsReducer = (state = initialState, action) => {
         isFetchingData: true,
       };
     case ADD_POST_COMMENT_SUCCESS:
+      console.log(state.data[0].comments);
       return {
         ...state,
         isFetchingData: false,
         data: [
           {
             ...state.data[0],
-            comments: [...state.data.comments, action.payload],
+            comments: [...state.data[0].comments, action.payload],
           },
         ],
       };
-
     case ADD_POST_COMMENT_FAILURE:
+      return {
+        ...state,
+        isFetchingData: false,
+        error: action.payload,
+      };
+    case EDIT_POST_COMMENT_START:
+      return {
+        ...state,
+        isFetchingData: true,
+      };
+    case EDIT_POST_COMMENT_SUCCESS:
+      return {
+        ...state,
+        isFetchingData: false,
+        // data: [
+        //   {
+        //     ...state.data[0],
+        //     comments: [...state.data.comments, action.payload],
+        //   },
+        // ],
+      };
+    case EDIT_POST_COMMENT_FAILURE:
+      return {
+        ...state,
+        isFetchingData: false,
+        error: action.payload,
+      };
+    case DELETE_POST_COMMENT_START:
+      return {
+        ...state,
+        isFetchingData: true,
+      };
+    case DELETE_POST_COMMENT_SUCCESS:
+      return {
+        ...state,
+        isFetchingData: false,
+        // data: [
+        //   {
+        //     ...state.data[0],
+        //     comments: [...state.data.comments, action.payload],
+        //   },
+        // ],
+      };
+    case DELETE_POST_COMMENT_FAILURE:
       return {
         ...state,
         isFetchingData: false,

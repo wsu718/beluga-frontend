@@ -13,14 +13,16 @@ import {
     EDIT_POST_SUCCESS,
     DELETE_POST_START,
     DELETE_POST_SUCCESS,
-    DELETE_POST_FAILURE
-} from "../actions"
-
+    DELETE_POST_FAILURE,
+    ADD_POST_COMMENT_START,
+    ADD_POST_COMMENT_SUCCESS,
+    ADD_POST_COMMENT_FAILURE,
+} from '../actions';
 
 const initialState = {
     isFetchingData: false,
     error: '',
-    data: []
+    data: [],
 };
 
 export const postsReducer = (state = initialState, action) => {
@@ -29,102 +31,120 @@ export const postsReducer = (state = initialState, action) => {
         case GET_POSTS_START:
             return {
                 ...state,
-                isFetchingData: true
-            }
+                isFetchingData: true,
+            };
         case GET_POSTS_SUCCESS:
             return {
                 ...state,
                 isFetchingData: false,
                 error: '',
-                data: action.payload
-            }
+                data: action.payload,
+            };
         case GET_POSTS_FAILURE:
             return {
                 ...state,
                 isFetchingData: false,
-                error: action.payload
-            }
+                error: action.payload,
+            };
         case GET_POST_BY_ID_START:
             return {
                 ...state,
-                isFetchingData: true
-            }
+                isFetchingData: true,
+            };
         case GET_POST_BY_ID_SUCCESS:
             return {
                 ...state,
                 isFetchingData: false,
-                data: [action.payload]
-            }
+                data: [action.payload],
+            };
         case GET_POST_BY_ID_FAILURE:
             return {
                 ...state,
                 isFetchingData: false,
-                error: action.payload
-            }
+                error: action.payload,
+            };
         case ADD_POST_FAILURE:
             return {
                 ...state,
                 isFetchingData: false,
-                error: action.payload
-            }
+                error: action.payload,
+            };
         case ADD_POST_START:
             return {
                 ...state,
-                isFetchingData: true
-            }
+                isFetchingData: true,
+            };
         case ADD_POST_SUCCESS:
             return {
                 ...state,
                 isFetchingData: false,
-                data: [
-                    ...state.data,
-                    action.payload
-                ]
-            }
+                data: [action.payload, ...state.data],
+            };
         case EDIT_POST_FAILURE:
             return {
                 ...state,
                 isFetchingData: false,
-                error: action.payload
-            }
+                error: action.payload,
+            };
         case EDIT_POST_START:
             return {
                 ...state,
-                isFetchingData: true
-            }
+                isFetchingData: true,
+            };
         case EDIT_POST_SUCCESS:
             return {
                 ...state,
                 isFetchingData: false,
-                data: state.data.map(item => {
+                data: state.data.map((item) => {
                     if (item.id === action.payload.id) {
-                        return { ...action.payload }
+                        return { ...action.payload };
                     }
-                    return item
-                })
-            }
+                    return item;
+                }),
+            };
         case DELETE_POST_START:
             return {
                 ...state,
-                isFetchingData: true
-            }
+                isFetchingData: true,
+            };
         case DELETE_POST_SUCCESS:
             return {
                 ...state,
                 isFetchingData: false,
-                data: [
-                    ...state.data.filter(data => data.id !== action.payload.id)
-                ]
-            }
+                data: [...state.data.filter((data) => data.id !== action.payload.id)],
+            };
         case DELETE_POST_FAILURE:
             return {
                 ...state,
                 isFetchingData: false,
-                error: action.payload
-            }
+                error: action.payload,
+            };
+        case ADD_POST_COMMENT_START:
+            return {
+                ...state,
+                isFetchingData: true,
+            };
+        case ADD_POST_COMMENT_SUCCESS:
+            return {
+                ...state,
+                isFetchingData: false,
+                data: [
+                    {
+                        ...state.data[0],
+                        comments: [...state.data.comments, action.payload],
+                    },
+                ],
+            };
+
+        case ADD_POST_COMMENT_FAILURE:
+            return {
+                ...state,
+                isFetchingData: false,
+                error: action.payload,
+            };
         default:
             return state;
     }
-}
+};
 
 export default postsReducer;

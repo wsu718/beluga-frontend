@@ -12,29 +12,33 @@ const CommentCard = ({ comment, handleClick }) => {
 
   return (
     <>
-      <div className='mx-6 border-b border-gray-200'>
-        <div className='my-4'>{/* <p>{comment.commenter_user_name}</p> */}</div>
+      <div className=' border-b border-gray-200'>
+        <div className='mx-12'>
+          <div className='my-4'>
+            <p> USER NAME HERE {comment.user_id}</p>
+          </div>
 
-        <div className='my-4'>
-          <p>{comment.body}</p>
-        </div>
+          <div className='my-4'>
+            <p>{comment.body}</p>
+          </div>
 
-        <div className='flex my-4'>
-          <p>{comment.vote_count}</p>
-          <p>
-            <IconArrowUp onClick={() => handleClick()} />
-          </p>
-          <p>
-            <IconArrowDown onClick={() => handleClick()} />
-          </p>
-          {/* <p className='ml-6'>{comment.comments.length}</p> */}
-          <p>
-            <IconComment
-              onClick={() => {
-                setShowForm(!showForm);
-              }}
-            />
-          </p>
+          <div className='flex my-4'>
+            <p>{comment.vote_count}</p>
+            <p>
+              <IconArrowUp onClick={() => handleClick()} />
+            </p>
+            <p>
+              <IconArrowDown onClick={() => handleClick()} />
+            </p>
+            <p className='ml-6'>{comment.comments.length}</p>
+            <p>
+              <IconComment
+                onClick={() => {
+                  setShowForm(!showForm);
+                }}
+              />
+            </p>
+          </div>
         </div>
       </div>
       {comment.comments && comment.comments.length > 0

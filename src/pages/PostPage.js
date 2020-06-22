@@ -58,7 +58,7 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
           <p>
             <IconArrowDown onClick={() => console.log('test')} />
           </p>
-          <p className='ml-6'>{post?.comments.length}</p>
+          <p className='ml-6'>{post?.comments?.length}</p>
           <p>
             <IconComment />
           </p>

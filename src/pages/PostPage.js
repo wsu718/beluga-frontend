@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import { connect, useSelector } from 'react-redux';
-import { getPostByID, deletePost } from '../state/actions/index';
+import { getPostByID, deletePost, postVote } from '../state/actions/index';
 
 import CommentCard from '../components/CommentCard';
 import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
@@ -10,7 +10,7 @@ import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
 import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 import CreatePostComment from '../components/CreatePostComment';
 
-const PostPage = ({ posts, getPostByID, deletePost }) => {
+const PostPage = ({ posts, getPostByID, deletePost, postVote }) => {
   let history = useHistory();
 
   const { id } = useParams();
@@ -27,11 +27,18 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
   const handleDelete = () => {
     console.log(id);
     deletePost(id);
-    history.push(`/app`)
+    history.push(`/app`);
   };
 
   const handleEdit = () => {
     history.push(`/app/posts/${post.id}/edit`);
+  };
+
+  const handleUpvote = () => {
+    postVote(id, { up_vote: true });
+  };
+  const handleDownvote = () => {
+    postVote(id, { down_vote: true });
   };
 
   return (
@@ -53,18 +60,20 @@ const PostPage = ({ posts, getPostByID, deletePost }) => {
         <div className='flex my-4'>
           <p>{post?.vote_count}</p>
           <p>
-            <IconArrowUp onClick={() => console.log('test')} />
+            <IconArrowUp onClick={handleUpvote} />
           </p>
           <p>
-            <IconArrowDown onClick={() => console.log('test')} />
+            <IconArrowDown onClick={handleDownvote} />
           </p>
           <p className='ml-6'>{post?.comments?.length}</p>
           <p>
             <IconComment />
           </p>
         </div>
-        <button onClick={handleDelete}>Delete</button>
-        <button onClick={handleEdit}>Edit</button>
+        {post?.updateable ? <button onClick={handleEdit}>Edit</button> : null}
+        {post?.deleteable ? (
+          <button onClick={handleDelete}>Delete</button>
+        ) : null}
       </div>
 
       {/* Comments */}
@@ -89,4 +98,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getPostByID, deletePost })(PostPage);
+export default connect(mapStateToProps, {
+  getPostByID,
+  deletePost,
+  postVote,
+})(PostPage);

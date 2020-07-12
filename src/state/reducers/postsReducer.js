@@ -223,8 +223,10 @@ export const postsReducer = (state = initialState, action) => {
         data: [
           {
             ...state.data[0],
-
-            comments: [...state.data[0].comments],
+            comments: [
+              ...state.data[0].comments,
+              action.payload
+            ],
           },
         ],
       };

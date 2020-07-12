@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import { connect, useSelector } from 'react-redux';
@@ -12,6 +12,9 @@ import CreatePostComment from '../components/CreatePostComment';
 
 const PostPage = ({ posts, getPostByID, deletePost, postVote }) => {
   let history = useHistory();
+
+  // conditional for showing the comment form
+  const [showForm, setShowForm] = useState(false);
 
   const { id } = useParams();
   // const post = posts.data.find(post => post.id === Number(id))
@@ -37,9 +40,14 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote }) => {
   const handleUpvote = () => {
     postVote(id, { up_vote: true });
   };
+
   const handleDownvote = () => {
     postVote(id, { down_vote: true });
   };
+
+  const handleComment = () => {
+
+  }
 
   return (
     <div className='px-6 border-b border-gray-200'>
@@ -67,14 +75,22 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote }) => {
           </p>
           <p className='ml-6'>{post?.comments?.length}</p>
           <p>
-            <IconComment />
+            <IconComment
+              onClick={() => {
+                setShowForm(!showForm);
+              }}
+            />
           </p>
         </div>
+
+
         {post?.updateable ? <button onClick={handleEdit}>Edit</button> : null}
         {post?.deleteable ? (
           <button onClick={handleDelete}>Delete</button>
         ) : null}
       </div>
+
+
 
       {/* Comments */}
       <div>
@@ -85,9 +101,16 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote }) => {
         {}
       </div>
       {/* Comment on a post */}
-      <div>
+      {/* <div>
         <CreatePostComment post_id={post?.id} />
-      </div>
+      </div> */}
+
+      {showForm ? (
+        <CreatePostComment post_id={post?.id}
+          setShowForm={setShowForm}
+        />
+      ) : null}
+
     </div>
   );
 };

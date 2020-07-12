@@ -12,6 +12,9 @@ export const LOGOUT_START = 'LOGOUT_START';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
+export const CHECK_COOKIE_SUCCESS = 'CHECK_COOKIE_SUCCESS';
+
+
 export const login = (data) => (dispatch) => {
   axios.defaults.withCredentials = true;
 
@@ -80,3 +83,9 @@ export const logout = () => (dispatch) => {
     .then((res) => dispatch({ type: LOGOUT_SUCCESS, payload: res.data }))
     .catch((err) => dispatch({ type: LOGOUT_FAILURE, payload: err.response }));
 };
+
+export const checkCookie = () => {
+  return {
+    type: CHECK_COOKIE_SUCCESS
+  }
+}

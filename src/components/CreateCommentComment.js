@@ -13,6 +13,7 @@ const CreateCommentComment = ({
 
   const onSubmit = (comment) => {
     setShowForm(false);
+    console.log(comment_id, comment)
     addCommentComment(comment_id, comment);
   };
 

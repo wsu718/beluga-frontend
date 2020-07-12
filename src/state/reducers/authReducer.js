@@ -8,6 +8,7 @@ import {
   LOGOUT_START,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
+  CHECK_COOKIE_SUCCESS
 } from '../actions';
 
 const initialState = {
@@ -82,6 +83,12 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: false,
         error: action.payload,
       };
+    case CHECK_COOKIE_SUCCESS:
+      return {
+        ...state,
+        isLoggedIn: true,
+        isLoading: false,
+      }
     default:
       return state;
   }

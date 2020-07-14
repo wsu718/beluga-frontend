@@ -26,9 +26,9 @@ export const ADD_POST_COMMENT_START = 'ADD_POST_COMMENT_START';
 export const ADD_POST_COMMENT_SUCCESS = 'ADD_POST_COMMENT_SUCCESS';
 export const ADD_POST_COMMENT_FAILURE = 'ADD_POST_COMMENT_FAILURE';
 
-export const ADD_COMMENT_COMMENT_START = 'ADD_POST_COMMENT_START';
-export const ADD_COMMENT_COMMENT_SUCCESS = 'ADD_POST_COMMENT_SUCCESS';
-export const ADD_COMMENT_COMMENT_FAILURE = 'ADD_POST_COMMENT_FAILURE';
+export const ADD_COMMENT_COMMENT_START = 'ADD_COMMENT_COMMENT_START';
+export const ADD_COMMENT_COMMENT_SUCCESS = 'ADD_COMMENT_COMMENT_SUCCESS';
+export const ADD_COMMENT_COMMENT_FAILURE = 'ADD_COMMENT_COMMENT_FAILURE';
 
 export const EDIT_POST_COMMENT_START = 'EDIT_POST_COMMENT_START';
 export const EDIT_POST_COMMENT_SUCCESS = 'EDIT_POST_COMMENT_SUCCESS';
@@ -96,7 +96,7 @@ export const deletePost = (id) => (dispatch) => {
   dispatch({ type: DELETE_POST_START });
   axios
     .delete(`${process.env.REACT_APP_API_URL}/api/posts?post=${id}`)
-    .then((res) => dispatch({ type: DELETE_POST_SUCCESS, payload: res.data }))
+    .then((res) => dispatch({ type: DELETE_POST_SUCCESS, payload: id }))
     .catch((err) =>
       dispatch({ type: DELETE_POST_FAILURE, payload: err.response })
     );
@@ -176,7 +176,7 @@ export const postVote = (post_id, data) => (dispatch) => {
   dispatch({ type: POST_VOTE_START });
   axios
     .post(`${process.env.REACT_APP_API_URL}/api/pvotes?post=${post_id}`, data)
-    .then((res) => dispatch({ type: POST_VOTE_SUCCESS, payload: res.data }))
+    .then((res) => dispatch({ type: POST_VOTE_SUCCESS, payload: { post_id, data } }))
     .catch((err) =>
       dispatch({ type: POST_VOTE_FAILURE, payload: err.response })
     );

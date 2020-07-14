@@ -120,10 +120,11 @@ export const postsReducer = (state = initialState, action) => {
         isFetchingData: true,
       };
     case DELETE_POST_SUCCESS:
+      console.log(action.payload)
       return {
         ...state,
         isFetchingData: false,
-        data: [...state.data.filter((data) => data.id !== action.payload.id)],
+        data: [...state.data.filter((data) => data.id !== Number(action.payload))],
       };
     case DELETE_POST_FAILURE:
       return {
@@ -223,8 +224,10 @@ export const postsReducer = (state = initialState, action) => {
         data: [
           {
             ...state.data[0],
-
-            comments: [...state.data[0].comments],
+            comments: [
+              ...state.data[0].comments,
+              action.payload
+            ],
           },
         ],
       };
@@ -242,12 +245,21 @@ export const postsReducer = (state = initialState, action) => {
       };
     // need to be modified to accept the single new comment
     case POST_VOTE_SUCCESS:
-      console.log(state.data);
+      // console.log(state.data);
+      // console.log(action.payload)
       return {
         ...state,
         isFetchingData: false,
+        data: state.data.map((item) => {
+          if (item.id === action.payload.post_id) {
+            return {
+              ...item,
+              vote_count: item.vote_count + (action.payload.data.up_vote ? 1 : -1)
+            };
+          }
+          return item;
+        }),
       };
-
     case POST_VOTE_FAILURE:
       return {
         ...state,
@@ -260,3 +272,16 @@ export const postsReducer = (state = initialState, action) => {
 };
 
 export default postsReducer;
+
+
+// case EDIT_POST_SUCCESS:
+//   return {
+//     ...state,
+//     isFetchingData: false,
+//     data: state.data.map((item) => {
+//       if (item.id === action.payload.id) {
+//         return { ...action.payload };
+//       }
+//       return item;
+//     }),
+//   };

@@ -11,7 +11,7 @@ const Feed = ({ posts, getPosts }) => {
     }, [getPosts]);
 
     return (
-        <div className="pt-4">
+        <div>
             {posts.map(post => (
                 <PostCard post={post} key={post.id} />
             ))}

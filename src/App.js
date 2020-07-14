@@ -5,10 +5,7 @@ import Dashboard from './pages/Dashboard';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import LandingPage from './pages/LandingPage';
-import { useSelector } from 'react-redux';
-
-// import { useCookies } from 'react-cookie';
-
+import { useSelector, useDispatch } from 'react-redux';
 
 import './tailwind.generated.css';
 
@@ -16,14 +13,11 @@ function App() {
 
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
 
-  // console.log(test)
+  const dispatch = useDispatch();
 
-  // const [cookies2, setCookie] = useCookies(['beluga']);
-
-
-  // setCookie('beluga_id', user_id)
-
-  // console.log(cookies2)
+  if (document.cookie.indexOf('beluga') === -1) {
+    dispatch({ type: 'CHECK_COOKIE_SUCCESS' })
+  }
 
   return (
 
@@ -36,7 +30,8 @@ function App() {
           {isLoggedIn ? <Redirect to='/app' /> : <LandingPage />}
         </Route>
         <Route path="/login">
-          <LoginPage />
+          {isLoggedIn ? <Redirect to='/app' /> : <LoginPage />}
+          {/* <LoginPage /> */}
         </Route>
         <Route path="/register">
           <RegisterPage />

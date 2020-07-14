@@ -30,7 +30,8 @@ function App() {
           {isLoggedIn ? <Redirect to='/app' /> : <LandingPage />}
         </Route>
         <Route path="/login">
-          <LoginPage />
+          {isLoggedIn ? <Redirect to='/app' /> : <LoginPage />}
+          {/* <LoginPage /> */}
         </Route>
         <Route path="/register">
           <RegisterPage />

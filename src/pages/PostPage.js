@@ -22,13 +22,13 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote }) => {
   const post = useSelector((state) =>
     state.posts.data.find((post) => post.id === Number(id))
   );
-  console.log(post);
+
   useEffect(() => {
     getPostByID(id);
   }, [id, getPostByID]);
 
   const handleDelete = () => {
-    console.log(id);
+
     deletePost(id);
     history.push(`/app`);
   };

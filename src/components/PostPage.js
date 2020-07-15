@@ -201,7 +201,7 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
       </div>
 
       {showForm ? (
-        <CreatePostComment post_id={post?.id}
+        <CreatePostComment post_id={post.id}
           setShowForm={setShowForm}
         />
       ) : null}
@@ -210,7 +210,7 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
       <div>
         {post?.comments &&
           post.comments.map((comment) => (
-            <CommentCard comment={comment} key={comment.id} />
+            <CommentCard setShowForm={setShowForm} comment={comment} key={comment.id} />
           ))}
         {}
       </div>

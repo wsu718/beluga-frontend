@@ -217,7 +217,7 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         isFetchingData: true,
       };
-    // need to be modified to accept the single new comment
+    // can't figure this out -- this adds the payload to the comment array, not the comments.comments array
     case ADD_COMMENT_COMMENT_SUCCESS:
       return {
         ...state,
@@ -232,6 +232,25 @@ export const postsReducer = (state = initialState, action) => {
           },
         ],
       };
+    // case ADD_COMMENT_COMMENT_SUCCESS:
+    //   return {
+    //     ...state,
+    //     isFetchingData: false,
+    //     data: [
+    //       {
+    //         ...state.data[0],
+    //         comments: [
+    //           ...state.data[0].comments,
+    //           action.payload
+    //           // {
+    //           //   comments: [
+    //           //     action.payload
+    //           //   ]
+    //           // }
+    //         ],
+    //       },
+    //     ],
+    //   };
     case ADD_COMMENT_COMMENT_FAILURE:
       return {
         ...state,

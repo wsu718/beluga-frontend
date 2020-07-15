@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory, Link } from 'react-router-dom';
-// import axios from 'axios';
-// import Cookies from 'universal-cookie';
 
 import LandingTopNav from '../components/LandingTopNav';
 

@@ -30,7 +30,9 @@ const CreatePost = ({ addPost }) => {
                         <textarea name="header" rows="3" className="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 resize-none" placeholder="What are you thinking about?" ref={register} onKeyPress={handleUserKeyPress}></textarea>
                     </div>
                 </div>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded" type="submit">Post</button>
+                <div className='flex'>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded" type="submit">Post</button>
+                </div>
             </form>
         </div>
     );

@@ -104,12 +104,13 @@ export const postsReducer = (state = initialState, action) => {
         isFetchingData: true,
       };
     case EDIT_POST_SUCCESS:
+      console.log(action.payload)
       return {
         ...state,
         isFetchingData: false,
         data: state.data.map((item) => {
-          if (item.id === action.payload.id) {
-            return { ...action.payload };
+          if (item.id === action.payload.updatedPost.id) {
+            return { ...action.payload.updatedPost };
           }
           return item;
         }),

@@ -4,12 +4,14 @@ import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { addPostComment } from '../state/actions';
 
-const CreateComment = ({ post_id, addPostComment }) => {
-  const { register, handleSubmit } = useForm();
+const CreateComment = ({ post_id, addPostComment, setShowForm }) => {
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (comment) => {
     console.log(comment);
     addPostComment(post_id, comment);
+    reset()
+    setShowForm()
   };
 
   return (

@@ -1,11 +1,23 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import Profile from '../images/ws.jpg';
 import { logout } from '../state/actions';
 import { connect } from 'react-redux';
 
 
+
 const MobileDropDownMenu = ({ dropDownOpen, logout }) => {
+
+    let history = useHistory();
+
+    const handleLogout = () => {
+        logout()
+        console.log('logout')
+        history.push(`/`);
+    }
+
+
+
     return (
         <div className={`${dropDownOpen ? 'block' : 'hidden'} sm:hidden`} >
             <div className="pt-2 pb-3">
@@ -38,7 +50,7 @@ const MobileDropDownMenu = ({ dropDownOpen, logout }) => {
                         Settings
                             </NavLink>
 
-                    <NavLink to="/" className="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem" onClick={() => logout()}>
+                    <NavLink to="/" className="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem" onClick={handleLogout}>
                         Sign out
                             </NavLink>
 

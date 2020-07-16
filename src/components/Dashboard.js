@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
-import TopNav from '../components/TopNav';
+import TopNav from './TopNav';
 
-import { FeedContainer } from './FeedContainer'
+import { FeedContainer } from '../components/FeedContainer'
 
-import PostPage from './PostPage';
-import EditPostPage from './EditPostPage'
+import PostPage from '../components/PostPage';
+import EditPostPage from '../components/EditPostPage'
 
 
 const Dashboard = () => {

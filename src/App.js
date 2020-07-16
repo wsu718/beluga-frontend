@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
-import Dashboard from './pages/Dashboard';
-import RegisterPage from './pages/RegisterPage';
-import LoginPage from './pages/LoginPage';
-import LandingPage from './pages/LandingPage';
+import Dashboard from './components/Dashboard';
+import RegisterPage from './components/RegisterPage';
+import LoginPage from './components/LoginPage';
+import LandingPage from './components/LandingPage';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './tailwind.generated.css';

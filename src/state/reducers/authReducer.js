@@ -84,12 +84,12 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: false,
         error: action.payload,
       };
-    case CHECK_COOKIE_SUCCESS:
-      return {
-        ...state,
-        isLoggedIn: true,
-        isLoading: false,
-      }
+    // case CHECK_COOKIE_SUCCESS:
+    //   return {
+    //     ...state,
+    //     isLoggedIn: true,
+    //     isLoading: false,
+    //   }
     default:
       return state;
   }

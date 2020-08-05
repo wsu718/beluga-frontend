@@ -46,6 +46,7 @@ export const postsReducer = (state = initialState, action) => {
         isFetchingData: true,
       };
     case GET_POSTS_SUCCESS:
+      console.log(action.payload)
       return {
         ...state,
         isFetchingData: false,

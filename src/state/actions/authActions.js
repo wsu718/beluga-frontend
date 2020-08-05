@@ -37,8 +37,8 @@ export const login = (data) => (dispatch) => {
 };
 
 export const registerAction = (data) => (dispatch) => {
-  axios.defaults.withCredentials = true;
-
+  // axios.defaults.withCredentials = true;
+  console.log(data)
   dispatch({ type: REGISTER_START });
   return axios
     .post(`${process.env.REACT_APP_API_URL}/api/register`, data)

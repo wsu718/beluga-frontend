@@ -33,11 +33,11 @@ const PostCard = ({ post, postVote }) => {
         {/* Name */}
         <div className="ml-3">
           <div className="text-base font-medium leading-6 text-gray-800">
-            William Sulinski
+            {post.name}
           </div>
           {/* Username */}
           <div className="text-sm font-medium leading-5 text-gray-500">
-            @wsul
+            @{post.user_name}
           </div>
         </div>
       </div>

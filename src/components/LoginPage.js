@@ -78,12 +78,12 @@ const LoginPage = ({ auth, login }) => {
                                     </div>
                                 </div>
 
-                                <button type="submit" className="mt-6 w-full px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:shadow-outline active:bg-gray-900 transition duration-150 ease-in-out sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
+                                <button type="submit" className="mt-6 w-full px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:shadow-outline active:bg-gray-900 transition duration-150 ease-in-out sm:mt-6 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
                                     Login
                             </button>
                             </form>
 
-                            <p className="mt-3 text-sm leading-5 text-gray-500">
+                            <p className="mt-3 text-xs leading-5 text-gray-500">
                                 We care about the protection of your data. Read our
                                     <Link to="/" className="font-medium text-gray-900 underline ml-1">
                                     Privacy Policy

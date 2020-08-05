@@ -138,15 +138,15 @@ const CommentCard = ({
             {/* Replies panel */}
             <div className='flex items-center'>
               {/* Reply icon */}
-              <div>
-                <Replies className="text-gray-500 h-5 w-5 "
-                  onClick={handleAddComment}
+              {/* <div>
+                <Replies className="text-gray-500 h-5 w-5"
+                // onClick={handleAddComment}
                 />
-              </div>
+              </div> */}
               {/* Reply count */}
-              <div className='text-gray-500 text-sm ml-1'>
+              {/* <div className='text-gray-500 text-sm ml-1'>
                 {comment?.comments?.length}
-              </div>
+              </div> */}
             </div>
 
             {/* Upvotes panel */}

@@ -6,21 +6,21 @@ import { editPostComment, deletePostComment } from '../state/actions/index';
 
 import { useForm } from 'react-hook-form';
 
-import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
-import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
-import { ReactComponent as IconComment } from '../images/icon-comment.svg';
+// import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
+// import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
+// import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 
 import CreateCommentComment from './CreateCommentComment';
 import SubCommentCard from './SubCommentCard';
 
 
-import { ReactComponent as Replies } from '../images/chat.svg';
+// import { ReactComponent as Replies } from '../images/chat.svg';
 import { ReactComponent as Heart } from '../images/heart.svg';
 import { ReactComponent as ChevronUp } from '../images/chevron-up.svg';
 import { ReactComponent as ChevronDown } from '../images/chevron-down.svg';
 
-import { ReactComponent as ThumbUp } from '../images/thumb-up.svg';
-import { ReactComponent as ThumbDown } from '../images/thumb-down.svg';
+// import { ReactComponent as ThumbUp } from '../images/thumb-up.svg';
+// import { ReactComponent as ThumbDown } from '../images/thumb-down.svg';
 
 import { ReactComponent as Edit } from '../images/pencil.svg';
 import { ReactComponent as Delete } from '../images/trash.svg';
@@ -72,9 +72,9 @@ const CommentCard = ({
 
   // Commenting
 
-  const handleAddComment = () => {
-    setShowForm(!showForm)
-  }
+  // const handleAddComment = () => {
+  //   setShowForm(!showForm)
+  // }
 
   return (
     <div className='ml-12'>

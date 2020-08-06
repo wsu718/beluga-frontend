@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import MobileMenu from '../components/LandingMobileMenu'
 
 import Whale5 from '../images/whale-5.svg'
@@ -13,9 +13,9 @@ const LandingTopNav = () => {
         setIsMobileMenu(!isMobileMenu)
     }
 
-    const handleSubmit = e => {
-        e.preventDefault();
-    }
+    // const handleSubmit = e => {
+    //     e.preventDefault();
+    // }
 
     return (
         <div>

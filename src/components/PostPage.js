@@ -5,9 +5,9 @@ import { connect, useSelector } from 'react-redux';
 import { getPostByID, deletePost, postVote, editPost } from '../state/actions/index';
 
 import CommentCard from '../components/CommentCard';
-import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
-import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
-import { ReactComponent as IconComment } from '../images/icon-comment.svg';
+// import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
+// import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
+// import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 import CreatePostComment from '../components/CreatePostComment';
 
 import { ReactComponent as Replies } from '../images/chat.svg';
@@ -15,8 +15,8 @@ import { ReactComponent as Heart } from '../images/heart.svg';
 import { ReactComponent as ChevronUp } from '../images/chevron-up.svg';
 import { ReactComponent as ChevronDown } from '../images/chevron-down.svg';
 
-import { ReactComponent as ThumbUp } from '../images/thumb-up.svg';
-import { ReactComponent as ThumbDown } from '../images/thumb-down.svg';
+// import { ReactComponent as ThumbUp } from '../images/thumb-up.svg';
+// import { ReactComponent as ThumbDown } from '../images/thumb-down.svg';
 
 import { ReactComponent as Edit } from '../images/pencil.svg';
 import { ReactComponent as Delete } from '../images/trash.svg';
@@ -26,7 +26,7 @@ import { useForm } from 'react-hook-form';
 
 import Profile from '../images/ws.jpg'
 
-import PostCard from '../components/PostCard';
+// import PostCard from '../components/PostCard';
 
 const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
   let history = useHistory();
@@ -88,10 +88,6 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
   const handleAddComment = () => {
     setShowForm(!showForm)
   }
-
-
-
-
 
   // This code repeats a lot of what is in PostCard; can probably make a reusable Component.
 
@@ -200,11 +196,14 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
 
       </div>
 
-      {showForm ? (
+      {/* {showForm ? (
         <CreatePostComment post_id={post.id}
           setShowForm={setShowForm}
         />
-      ) : null}
+      ) : null} */}
+
+
+
 
       {/* Comments */}
       <div>
@@ -214,6 +213,8 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
           ))}
         {}
       </div>
+
+      <CreatePostComment post_id={id} />
 
     </div>
   );

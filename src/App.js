@@ -5,7 +5,7 @@ import Dashboard from './components/Dashboard';
 import RegisterPage from './components/RegisterPage';
 import LoginPage from './components/LoginPage';
 import LandingPage from './components/LandingPage';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import './tailwind.generated.css';
 
@@ -13,11 +13,11 @@ function App() {
 
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  if (document.cookie.indexOf('beluga') === -1) {
-    dispatch({ type: 'CHECK_COOKIE_SUCCESS' })
-  }
+  // if (document.cookie.indexOf('beluga') === -1) {
+  //   dispatch({ type: 'CHECK_COOKIE_SUCCESS' })
+  // }
 
   return (
 

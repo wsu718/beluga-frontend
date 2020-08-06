@@ -8,7 +8,7 @@ import {
   LOGOUT_START,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
-  CHECK_COOKIE_SUCCESS
+  // CHECK_COOKIE_SUCCESS
 } from '../actions';
 
 const initialState = {

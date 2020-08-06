@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import MobileMenu from '../components/LandingMobileMenu';
+// import MobileMenu from '../components/LandingMobileMenu';
 import LandingTopNav from '../components/LandingTopNav';
 
 // import Logo from '../images/logo.svg';
@@ -9,16 +9,16 @@ import LandingTopNav from '../components/LandingTopNav';
 // import Whale2 from '../images/whale-2.svg'
 // import Whale3 from '../images/whale-3.svg'
 // import Whale4 from '../images/whale-4.svg'
-import Whale5 from '../images/whale-5.svg'
+// import Whale5 from '../images/whale-5.svg'
 
 
 const LandingPage = () => {
 
-    const [isMobileMenu, setIsMobileMenu] = useState(false);
+    // const [isMobileMenu, setIsMobileMenu] = useState(false);
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenu(!isMobileMenu)
-    }
+    // const toggleMobileMenu = () => {
+    //     setIsMobileMenu(!isMobileMenu)
+    // }
 
     const handleSubmit = e => {
         e.preventDefault();

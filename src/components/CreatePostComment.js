@@ -11,7 +11,7 @@ const CreateComment = ({ post_id, addPostComment, setShowForm }) => {
     console.log(comment);
     addPostComment(post_id, comment);
     reset()
-    setShowForm()
+    // setShowForm()
   };
 
   return (

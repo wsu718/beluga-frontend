@@ -4,9 +4,9 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postVote } from '../state/actions/index';
 
-import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
-import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
-import { ReactComponent as IconComment } from '../images/icon-comment.svg';
+// import { ReactComponent as IconArrowDown } from '../images/icon-arrow-down.svg';
+// import { ReactComponent as IconArrowUp } from '../images/icon-arrow-up.svg';
+// import { ReactComponent as IconComment } from '../images/icon-comment.svg';
 
 import { ReactComponent as Replies } from '../images/chat.svg';
 import { ReactComponent as Heart } from '../images/heart.svg';
@@ -16,12 +16,12 @@ import Profile from '../images/ws.jpg'
 const PostCard = ({ post, postVote }) => {
   let history = useHistory();
 
-  const handleUpvote = () => {
-    postVote(post.id, { up_vote: true });
-  };
-  const handleDownvote = () => {
-    postVote(post.id, { down_vote: true });
-  };
+  // const handleUpvote = () => {
+  //   postVote(post.id, { up_vote: true });
+  // };
+  // const handleDownvote = () => {
+  //   postVote(post.id, { down_vote: true });
+  // };
 
   return (
     <div className='overflow-hidden border-b border-gray-200 pt-4'>
@@ -64,8 +64,7 @@ const PostCard = ({ post, postVote }) => {
           </div>
           {/* Reply count */}
           <div className='text-gray-500 text-sm ml-1'>
-            11
-            {/* {post.comments.length} */}
+            {post.comment_count}
           </div>
         </div>
 

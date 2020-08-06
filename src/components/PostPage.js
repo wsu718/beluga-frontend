@@ -135,10 +135,10 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
                   ></textarea>
                 </div>
               </div>
-              <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded'>
+              <button className='bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 mt-4 mr-4 rounded'>
                 Save
                 </button>
-              <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded' onClick={handleEditCancel}>
+              <button className='bg-gray-200 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded' onClick={handleEditCancel}>
                 Cancel
                 </button>
             </form>

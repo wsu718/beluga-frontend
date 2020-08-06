@@ -76,11 +76,15 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
   // Voting
 
   const handleUpvote = () => {
-    postVote(id, { up_vote: true });
+    if (!post?.user_vote_up) {
+      postVote(post.id, { up_vote: true });
+    }
   };
 
   const handleDownvote = () => {
-    postVote(id, { down_vote: true });
+    if (!post?.user_vote_down) {
+      postVote(post.id, { down_vote: true });
+    }
   };
 
   // Commenting
@@ -104,11 +108,11 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
         {/* Name */}
         <div className="ml-3">
           <div className="text-base font-medium leading-6 text-gray-800">
-            William Sulinski
+            {post?.name}
           </div>
           {/* Username */}
           <div className="text-sm font-medium leading-5 text-gray-500">
-            @wsul
+            @{post?.user_name}
           </div>
         </div>
       </div>
@@ -135,7 +139,7 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
                   ></textarea>
                 </div>
               </div>
-              <button className='bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 mt-4 mr-4 rounded'>
+              <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 mr-4 rounded'>
                 Save
                 </button>
               <button className='bg-gray-200 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded' onClick={handleEditCancel}>
@@ -150,26 +154,31 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
       <div className='flex my-4 ml-16 mx-4 justify-between'>
 
         {/* Comment and like sums */}
-        <div className='flex'>
+        <div className='flex mr-4'>
           {/* Replies panel */}
-          <div className='flex items-center'>
-            {/* Reply icon */}
+          {/* <div className='flex items-center'>
+            Reply icon
             <div>
               <Replies className="text-gray-500 h-5 w-5 "
                 onClick={handleAddComment}
               />
             </div>
-            {/* Reply count */}
+            Reply count 
             <div className='text-gray-500 text-sm ml-1'>
               {post?.comments?.length}
             </div>
-          </div>
+          </div> */}
 
           {/* Upvotes panel */}
           <div className='flex items-center ml-2'>
             {/* Vote icon */}
-            <div className="flex">
-              <Heart className="text-gray-500 h-5 w-5" />
+
+            <div >
+              {/* <ChevronUp onClick={handleUpvote} className="text-gray-500 h-5 w-5" /> */}
+              <ChevronUp onClick={handleUpvote} className={`${post?.user_vote_up ? 'text-purple-800' : ''}  text-gray-500 h-5 w-5`} />
+            </div>
+            <div className=''>
+              <ChevronDown onClick={handleDownvote} className={`${post?.user_vote_down ? 'text-purple-800' : ''}  text-gray-500 h-5 w-5`} />
             </div>
             {/* Vote count */}
             <div className='text-gray-500 text-sm ml-1'>
@@ -180,12 +189,7 @@ const PostPage = ({ posts, getPostByID, deletePost, postVote, editPost }) => {
 
         {/* Upvote, edit, delete */}
         <div className="flex">
-          <div className='ml-2'>
-            <ChevronUp onClick={handleUpvote} className="text-gray-500 h-5 w-5" />
-          </div>
-          <div className='ml-2'>
-            <ChevronDown onClick={handleDownvote} className="text-gray-500 h-5 w-5" />
-          </div>
+
           <div className='ml-2'>
             {post?.updateable ? <Edit className="text-gray-500 h-5 w-5" onClick={handleEdit} /> : null}
           </div>

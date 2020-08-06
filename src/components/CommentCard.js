@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { editPostComment, deletePostComment } from '../state/actions/index';
+import { editPostComment, deletePostComment, commentVote } from '../state/actions/index';
 
 import { useForm } from 'react-hook-form';
 
@@ -19,9 +19,6 @@ import { ReactComponent as Heart } from '../images/heart.svg';
 import { ReactComponent as ChevronUp } from '../images/chevron-up.svg';
 import { ReactComponent as ChevronDown } from '../images/chevron-down.svg';
 
-// import { ReactComponent as ThumbUp } from '../images/thumb-up.svg';
-// import { ReactComponent as ThumbDown } from '../images/thumb-down.svg';
-
 import { ReactComponent as Edit } from '../images/pencil.svg';
 import { ReactComponent as Delete } from '../images/trash.svg';
 
@@ -29,7 +26,7 @@ import Profile from '../images/ws.jpg'
 
 const CommentCard = ({
   comment,
-  handleClick,
+  commentVote,
   editPostComment,
   deletePostComment
 }) => {
@@ -62,13 +59,19 @@ const CommentCard = ({
 
   // Voting
 
-  // const handleUpvote = () => {
-  //   commentVote(id, { up_vote: true });
-  // };
+  const handleUpvote = () => {
+    console.log('clicked')
+    if (!comment?.user_vote_up) {
+      console.log('inside if')
+      commentVote(comment.id, { up_vote: true });
+    }
+  };
 
-  // const handleDownvote = () => {
-  //   commentVote(id, { down_vote: true });
-  // };
+  const handleDownvote = () => {
+    if (!comment?.user_vote_down) {
+      commentVote(comment.id, { down_vote: true });
+    }
+  };
 
   // Commenting
 
@@ -88,12 +91,12 @@ const CommentCard = ({
           {/* Name */}
           <div className="ml-3">
             <div className="text-base font-medium leading-6 text-gray-800">
-              William Sulinski
-          </div>
+              {comment?.name}
+            </div>
             {/* Username */}
             <div className="text-sm font-medium leading-5 text-gray-500">
-              @wsul
-          </div>
+              @{comment?.user_name}
+            </div>
           </div>
         </div>
 
@@ -119,10 +122,10 @@ const CommentCard = ({
                     ></textarea>
                   </div>
                 </div>
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded'>
+                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 mr-4 rounded'>
                   Save
                 </button>
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded' onClick={handleEditCancel}>
+                <button className='bg-gray-200 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded' onClick={handleEditCancel}>
                   Cancel
                 </button>
               </form>
@@ -151,9 +154,11 @@ const CommentCard = ({
 
             {/* Upvotes panel */}
             <div className='flex items-center ml-2'>
-              {/* Vote icon */}
-              <div className="flex">
-                <Heart className="text-gray-500 h-5 w-5" />
+              <div className=''>
+                <ChevronUp onClick={handleUpvote} className="text-gray-500 h-5 w-5" />
+              </div>
+              <div className=''>
+                <ChevronDown onClick={handleDownvote} className="text-gray-500 h-5 w-5" />
               </div>
               {/* Vote count */}
               <div className='text-gray-500 text-sm ml-1'>
@@ -164,12 +169,7 @@ const CommentCard = ({
 
           {/* Upvote, edit, delete */}
           <div className="flex">
-            <div className='ml-2'>
-              <ChevronUp onClick={console.log('upvote')} className="text-gray-500 h-5 w-5" />
-            </div>
-            <div className='ml-2'>
-              <ChevronDown onClick={console.log('upvote')} className="text-gray-500 h-5 w-5" />
-            </div>
+
             <div className='ml-2'>
               {comment?.updateable ? <Edit className="text-gray-500 h-5 w-5" onClick={handleEdit} /> : null}
             </div>
@@ -278,6 +278,6 @@ const CommentCard = ({
   );
 };
 
-export default connect(null, { editPostComment, deletePostComment })(
+export default connect(null, { editPostComment, commentVote, deletePostComment })(
   CommentCard
 );

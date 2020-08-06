@@ -29,6 +29,9 @@ import {
   POST_VOTE_START,
   POST_VOTE_SUCCESS,
   POST_VOTE_FAILURE,
+  COMMENT_VOTE_START,
+  COMMENT_VOTE_SUCCESS,
+  COMMENT_VOTE_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -258,16 +261,12 @@ export const postsReducer = (state = initialState, action) => {
         isFetchingData: false,
         error: action.payload,
       };
-
     case POST_VOTE_START:
       return {
         ...state,
         isFetchingData: true,
       };
-    // need to be modified to accept the single new comment
     case POST_VOTE_SUCCESS:
-      // console.log(state.data);
-      // console.log(action.payload)
       return {
         ...state,
         isFetchingData: false,
@@ -275,13 +274,44 @@ export const postsReducer = (state = initialState, action) => {
           if (item.id === action.payload.post_id) {
             return {
               ...item,
-              vote_count: item.vote_count + (action.payload.data.up_vote ? 1 : -1)
+              vote_count: item.vote_count + (action.payload.data.up_vote ? 1 : -1),
+              user_vote_up: action.payload.data.up_vote ? true : false,
+              user_vote_down: action.payload.data.up_vote ? false : true,
             };
           }
           return item;
         }),
       };
     case POST_VOTE_FAILURE:
+      return {
+        ...state,
+        isFetchingData: false,
+        error: action.payload,
+      };
+    case COMMENT_VOTE_START:
+      return {
+        ...state,
+        isFetchingData: true,
+      };
+    case COMMENT_VOTE_SUCCESS:
+      console.log(action.payload)
+      return {
+        ...state,
+        isFetchingData: false,
+        ...state.data.comments.map((item) => {
+          if (item.id === action.payload.comment_id) {
+            return {
+              ...item,
+              vote_count: item.vote_count + (action.payload.data.up_vote ? 1 : -1),
+              user_vote_up: action.payload.data.up_vote ? true : false,
+              user_vote_down: action.payload.data.up_vote ? false : true,
+            };
+          }
+          return item;
+        }),
+
+      };
+    case COMMENT_VOTE_FAILURE:
       return {
         ...state,
         isFetchingData: false,

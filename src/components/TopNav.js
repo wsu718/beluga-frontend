@@ -27,7 +27,7 @@ const TopNav = () => {
 
                         {/* TopNav - Logo */}
                         <div className="flex-shrink-0 flex items-center">
-                            <NavLink to="/">
+                            <NavLink to="/app">
                                 <img className="block h-8 w-auto" src={Logo} alt="Logo" />
                             </NavLink>
                         </div>

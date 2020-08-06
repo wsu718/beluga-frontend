@@ -42,6 +42,11 @@ export const POST_VOTE_START = 'POST_VOTE_START';
 export const POST_VOTE_SUCCESS = 'POST_VOTE_SUCCESS';
 export const POST_VOTE_FAILURE = 'POST_VOTE_FAILURE';
 
+export const COMMENT_VOTE_START = 'COMMENT_VOTE_START';
+export const COMMENT_VOTE_SUCCESS = 'COMMENT_VOTE_SUCCESS';
+export const COMMENT_VOTE_FAILURE = 'COMMENT_VOTE_FAILURE';
+
+
 // ============ ACTIONS ============ //
 
 export const getPosts = () => (dispatch) => {
@@ -179,5 +184,17 @@ export const postVote = (post_id, data) => (dispatch) => {
     .then((res) => dispatch({ type: POST_VOTE_SUCCESS, payload: { post_id, data } }))
     .catch((err) =>
       dispatch({ type: POST_VOTE_FAILURE, payload: err.response })
+    );
+};
+
+// ============ VOTE ON A COMMENT ============ //
+export const commentVote = (comment_id, data) => (dispatch) => {
+  axios.defaults.withCredentials = true;
+  dispatch({ type: COMMENT_VOTE_START });
+  axios
+    .post(`${process.env.REACT_APP_API_URL}/api/cvotes?comment=${comment_id}`, data)
+    .then((res) => dispatch({ type: COMMENT_VOTE_SUCCESS, payload: { comment_id, data } }))
+    .catch((err) =>
+      dispatch({ type: COMMENT_VOTE_FAILURE, payload: err.response })
     );
 };

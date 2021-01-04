@@ -1,17 +1,12 @@
 import React from 'react';
-
-import CreatePost from './CreatePost.js';
+import CreatePost from '../components/CreatePost.js';
 import Feed from '../components/Feed';
 
-const MainPage = ({ posts }) => {
-
+export const FeedContainer = () => {
     return (
         <div>
             <CreatePost />
-            <Feed posts={posts} />
+            <Feed />
         </div>
     )
-
-};
-
-export default MainPage;
+}

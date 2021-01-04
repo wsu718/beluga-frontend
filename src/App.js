@@ -1,45 +1,48 @@
-import React, { useReducer } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
-import { feedReducer, initialState } from './reducers/feedReducer';
-import { FeedDispatchContext } from './contexts/FeedDispatchContext';
-
-import LandingPage from './containers/LandingPage';
-import LoginPage from './containers/LoginPage';
-import MainPage from './containers/MainPage';
-import ViewPost from './containers/ViewPost';
+import Dashboard from './components/Dashboard';
+import RegisterPage from './components/RegisterPage';
+import LoginPage from './components/LoginPage';
+import LandingPage from './components/LandingPage';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './tailwind.generated.css';
 
 function App() {
 
-  const [posts, dispatch] = useReducer(feedReducer, initialState)
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
 
+  const dispatch = useDispatch();
 
-  // const handleClick = () => {
-  //   // dispatch({ type: "INCREASE_VOTE_COUNT" })
-  //   console.log('click')
-  // }
+  if (document.cookie.indexOf('beluga') === -1) {
+    dispatch({ type: 'CHECK_COOKIE_SUCCESS' })
+  }
 
   return (
-    <FeedDispatchContext.Provider value={{ dispatch }}>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Route path="/main">
-            <MainPage posts={posts} />
-          </Route>
-          <Route path="/posts/:id">
-            <ViewPost posts={posts} />
-          </Route>
-        </Switch>
-      </Router>
-    </FeedDispatchContext.Provider>
+
+
+
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          {/* <LandingPage /> */}
+          {isLoggedIn ? <Redirect to='/app' /> : <LandingPage />}
+        </Route>
+        <Route path="/login">
+          {isLoggedIn ? <Redirect to='/app' /> : <LoginPage />}
+          {/* <LoginPage /> */}
+        </Route>
+        <Route path="/register">
+          <RegisterPage />
+        </Route>
+
+        {/* This is going to be "/" after we have cookies working */}
+        <Route path="/app">
+          <Dashboard />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
